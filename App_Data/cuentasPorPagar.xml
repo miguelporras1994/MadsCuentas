@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<MenuItem Text="Start" Value="H" Enabled="false" Url="">
+  <MenuItem Text="Radicacion" Value="0"  Url="Radicacion.aspx">
+  </MenuItem>
+
+
+  <MenuItem Text="Adjuntos Radicación" Value="0"  Url="ListarPendientesAdjuntosRadicados.aspx">
+  </MenuItem>
+
+
+  <MenuItem Text="Cuentas por Pagar" Value="0"  Url="#">
+   
+    <MenuItem Text="Registrar Cuenta" Value="0"  Url="ListarPendientesCuentasPorPagar.aspx">
+    </MenuItem>
+   
+    <MenuItem Text="Editar" Value="0"  Url="ListarCuentasPorPagar.aspx">
+    </MenuItem>
+    <MenuItem Text="Dividir Pago" Value="0"  Url="ListarCuentasDividirPago.aspx">
+    </MenuItem>
+    <MenuItem Text="Editar Cuenta" Value="0"  Url="ListarEditarCuentas.aspx">
+    </MenuItem>
+  </MenuItem>
+
+  <MenuItem Text="Devoluciones" Value="0"  Url="ListarDevolucionesInternas.aspx">
+    <MenuItem Text="Registrar" Value="0"  Url="RegistrarDevolucion.aspx">
+    </MenuItem>
+    <MenuItem Text="Resolver" Value="0"  Url="ListarDevolucionesInternas.aspx">
+    </MenuItem>
+    <MenuItem Text="Devoluciones Contratista" Value="0"  Url="ListarDevolucionesContratistas.aspx">
+    </MenuItem>
+  </MenuItem>
+
+  <MenuItem Text="Reporte" Value="0"  Url="ReporteGeneral.aspx">
+  </MenuItem>
+
+
+  <MenuItem Text="Salir" Value="0"  Url="Logout.aspx">
+  </MenuItem>
+</MenuItem>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<MenuItem Text="Start" Value="H" Enabled="false" Url="">
+  <MenuItem Text="Inicio" Value="0"  Url="Formularios.aspx">
+    
+  </MenuItem>
+ <MenuItem Text="Radicacion" Value="0"  Url="Radicacion.aspx">
+  </MenuItem>
+
+
+  <MenuItem Text="Adjuntos Radicación" Value="0"  Url="ListarPendientesAdjuntosRadicados.aspx">
+  </MenuItem>
+  
+  <MenuItem Text="Cuentas por Pagar" Value="0"  Url="#">
+    <MenuItem Text="Asignar" Value="0"  Url="ListarPendientesAsignacion.aspx">
+    </MenuItem>
+    <MenuItem Text="Registrar CxP" Value="0"  Url="ListarPendientesCuentasPorPagar.aspx">
+    </MenuItem>
+    <MenuItem Text="Re asignar Cuenta" Value="0"  Url="ReasignarCuentas.aspx">
+    </MenuItem>
+    <MenuItem Text="Editar CxP" Value="0"  Url="ListarCuentasPorPagar.aspx">
+    </MenuItem>
+    <MenuItem Text="Eliminar CxP" Value="0"  Url="ListarCuentasEliminarCXP.aspx">
+    </MenuItem>
+    <MenuItem Text="Dividir Pago" Value="0"  Url="ListarCuentasDividirPago.aspx">
+    </MenuItem>
+    <MenuItem Text="Editar Cuenta" Value="0"  Url="ListarEditarCuentas.aspx">
+    </MenuItem>
+    <MenuItem Text="Editar Cuenta" Value="0"  Url="ListarEditarCuentas.aspx">
+    </MenuItem>
+    <MenuItem Text="Liquidar Cuenta" Value="0"  Url="ListarPendientesLiquidar.aspx">
+    </MenuItem>
+    <MenuItem Text="Factura Electronica" Value="0"  Url="AdicionarFacturaElectronica.aspx">
+    </MenuItem>
+  </MenuItem>
+
+  <MenuItem Text="Contabilidad" Value="0"  Url="#">
+    <MenuItem Text="Registrar OB" Value="0"  Url="ListarCuentasContabilidad.aspx">
+    </MenuItem>
+    <MenuItem Text="Cargar Archivo" Value="0"  Url="CargarCuentasContabilidad.aspx">
+    </MenuItem>
+    <MenuItem Text="Asignar Cuenta" Value="0"  Url="AsignarCuentaContabilidad.aspx">
+    </MenuItem>
+    <MenuItem Text="Reasignar Cuenta" Value="0"  Url="ReasignarCuentaContabilidad.aspx">
+    </MenuItem>
+  </MenuItem>
+
+  <MenuItem Text="Tesoreria" Value="0"  Url="CargarCuentasTesoreria.aspx">
+    <MenuItem Text="Cargar Archivo" Value="0"  Url="CargarCuentasTesoreria.aspx">
+    </MenuItem>
+    <MenuItem Text="Asignar Cuenta" Value="0"  Url="AsignarCuentaTesoreria.aspx">
+    </MenuItem>
+    <MenuItem Text="Cuentas Asignadas" Value="0"  Url="ListarCuentasTesoreria.aspx">
+    </MenuItem>
+    <MenuItem Text="Reasignar Cuenta" Value="0"  Url="ListarCuentasTesoreriaReasignar.aspx">
+    </MenuItem>
+  </MenuItem>
+
+  <MenuItem Text="Devoluciones" Value="0"  Url="ListarDevolucionesInternas.aspx">
+    <MenuItem Text="Registrar" Value="0"  Url="RegistrarDevolucion.aspx">
+    </MenuItem>
+    <MenuItem Text="Resolver" Value="0"  Url="ListarDevolucionesInternas.aspx">
+    </MenuItem>
+    <MenuItem Text="Devoluciones Contratista" Value="0"  Url="ListarDevolucionesContratistas.aspx">
+    </MenuItem>
+  </MenuItem>
+
+  <MenuItem Text="Reporte" Value="0"  Url="ReporteGeneral.aspx">
+    <MenuItem Text="Reporte" Value="0"  Url="ReporteGeneral.aspx">
+    </MenuItem>
+  </MenuItem>
+
+  <MenuItem Text="Adquisiciones" Value="0"  Url="#">
+    <MenuItem Text="Pendientes aprobar" Value="0"  Url="adminAdquisiciones/ListarSolicitudes.aspx"/>
+    <MenuItem Text="Listar Solicitudes" Value="0"  Url="adminAdquisiciones/ListarSolicitudesTodas.aspx"/>
+  </MenuItem>
+
+  <MenuItem Text="Reportes Adquiciones" Value="0"  Url="#">
+    <MenuItem Text="Solicitudes" Value="0"  Url="adminAdquisiciones/ReporteGeneral.aspx"/>
+    <!--<MenuItem Text="Solicitudes 2" Value="0"  Url="adminAdquicisiones/ReporteGeneral2.aspx"/>-->
+    <MenuItem Text="Adquisiciones" Value="0"  Url="adminAdquiciones/ReporteGeneralAdquisiciones.aspx"/>
+  </MenuItem>
+
+
+  <MenuItem Text="Salir" Value="0"  Url="Logout.aspx">
+  </MenuItem>
+</MenuItem>

@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="adm" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="adm" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="adm">
+      <s:element name="cerrarSesion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idusuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="cerrarSesionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cerrarSesionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultarSesion">
+        <s:complexType />
+      </s:element>
+      <s:element name="consultarSesionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consultarSesionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="perfilUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="tns:UsuarioDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UsuarioDto">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:PersonaDto">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="clave" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="fechaCambio" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="eMailEmpresa" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="idEmpresaAplicacion" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="empresaAplicacion" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="usuarioEmpresaAplicacion">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="cliente" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="idCliente" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="estilo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="tipoUsuario" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="idTipoUsuario" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="empleadoDe" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="empresaBd" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="idCargo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="cargo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="rutaEnsamblado" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="objeto" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="empresaAplicacionBd" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="intentos" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="vigencia" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="idarea" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="area" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="icono" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PersonaDto">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BasicoDto">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="idTipoIdentificacion" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="tag" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="tipoIdentificacion" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="identificacion" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="idCiudadIdentificacion" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="nombres" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="apellidos" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="primerNombre" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="segundoNombre" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="primerApellido" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="segundoApellido" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="sexo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="fechaNacimiento" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="idLugarNacimiento" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="eMail" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="telefono2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="telefono3" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="celular" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ciudadNacimiento" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="idDepartamentoNacimiento" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="departamentoNacimiento" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="idPaisNacimiento" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="paisNacimiento" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BasicoDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="fila" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="columnas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idioma" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ordenarPor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="originador" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="lineaBlanco" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="fechaRegistro" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="agruparPor" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="perfilUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="perfilUsuarioResult" type="tns:ArrayOfRamaDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRamaDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RamaDto" nillable="true" type="tns:RamaDto" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RamaDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="data" type="tns:DataDto" />
+          <s:element minOccurs="0" maxOccurs="1" name="attr" type="tns:AttrDto" />
+          <s:element minOccurs="0" maxOccurs="1" name="metadata" />
+          <s:element minOccurs="0" maxOccurs="1" name="children" type="tns:ArrayOfRamaDto" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DataDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="icon" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AttrDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="href" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="listarUsuarioDto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listarUsuarioDtoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listarUsuarioDtoResult" type="tns:UsuarioDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="enviarCuentaEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="tns:UsuarioDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="enviarCuentaEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="enviarCuentaEmailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="tns:UsuarioDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="loginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="loginResult" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="chatContactos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="tns:UsuarioDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ChatDto">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="actualizar" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="yo" type="tns:ChatContactoDto" />
+          <s:element minOccurs="0" maxOccurs="1" name="carpetas" type="tns:ArrayOfChatCarpetaDto" />
+          <s:element minOccurs="0" maxOccurs="1" name="usuarios" type="tns:ArrayOfChatContactoDto" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ChatContactoDto">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="actualizar" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="idusuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idcontacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idarea" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="area" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="icono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sexo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfChatCarpetaDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ChatCarpetaDto" nillable="true" type="tns:ChatCarpetaDto" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ChatCarpetaDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idusuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idarea" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="area" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="icono" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfChatContactoDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ChatContactoDto" nillable="true" type="tns:ChatContactoDto" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="chatContactosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="chatContactosResult" type="tns:ChatDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizarChatContactos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idusuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizarChatContactosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="actualizarChatContactosResult" type="tns:ChatDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="chatLeerMensaje">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idusuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MensajeDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idchat" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="leido" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="de" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sexo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="para" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="mensaje" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="fecha" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMensajeDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MensajeDto" nillable="true" type="tns:MensajeDto" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="chatLeerMensajeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="chatLeerMensajeResult" type="tns:ArrayOfMensajeDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="enviarCorreoElectronico">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="tns:MailDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MailDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="para" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="de" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="asunto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="mensaje" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="servidor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="puerto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="contrasena" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="copia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="copiaOculta" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="htmlText" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="enviarCorreoElectronicoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="enviarCorreoElectronicoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="agendaDtos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obj" type="tns:UsuarioDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUsuarioDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UsuarioDto" nillable="true" type="tns:UsuarioDto" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="agendaDtosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="agendaDtosResult" type="tns:ArrayOfUsuarioDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="parametroDto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="parametroDtoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametroDtoResult" type="tns:ParametroDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ParametroDto">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BasicoDto">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="cortenomina" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="idempresa" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="parametroModificar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="objDto" type="tns:ParametroDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="parametroModificarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="parametroModificarResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="cerrarSesionSoapIn">
+    <wsdl:part name="parameters" element="tns:cerrarSesion" />
+  </wsdl:message>
+  <wsdl:message name="cerrarSesionSoapOut">
+    <wsdl:part name="parameters" element="tns:cerrarSesionResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultarSesionSoapIn">
+    <wsdl:part name="parameters" element="tns:consultarSesion" />
+  </wsdl:message>
+  <wsdl:message name="consultarSesionSoapOut">
+    <wsdl:part name="parameters" element="tns:consultarSesionResponse" />
+  </wsdl:message>
+  <wsdl:message name="perfilUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:perfilUsuario" />
+  </wsdl:message>
+  <wsdl:message name="perfilUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:perfilUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="listarUsuarioDtoSoapIn">
+    <wsdl:part name="parameters" element="tns:listarUsuarioDto" />
+  </wsdl:message>
+  <wsdl:message name="listarUsuarioDtoSoapOut">
+    <wsdl:part name="parameters" element="tns:listarUsuarioDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="enviarCuentaEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:enviarCuentaEmail" />
+  </wsdl:message>
+  <wsdl:message name="enviarCuentaEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:enviarCuentaEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="loginSoapIn">
+    <wsdl:part name="parameters" element="tns:login" />
+  </wsdl:message>
+  <wsdl:message name="loginSoapOut">
+    <wsdl:part name="parameters" element="tns:loginResponse" />
+  </wsdl:message>
+  <wsdl:message name="chatContactosSoapIn">
+    <wsdl:part name="parameters" element="tns:chatContactos" />
+  </wsdl:message>
+  <wsdl:message name="chatContactosSoapOut">
+    <wsdl:part name="parameters" element="tns:chatContactosResponse" />
+  </wsdl:message>
+  <wsdl:message name="actualizarChatContactosSoapIn">
+    <wsdl:part name="parameters" element="tns:actualizarChatContactos" />
+  </wsdl:message>
+  <wsdl:message name="actualizarChatContactosSoapOut">
+    <wsdl:part name="parameters" element="tns:actualizarChatContactosResponse" />
+  </wsdl:message>
+  <wsdl:message name="chatLeerMensajeSoapIn">
+    <wsdl:part name="parameters" element="tns:chatLeerMensaje" />
+  </wsdl:message>
+  <wsdl:message name="chatLeerMensajeSoapOut">
+    <wsdl:part name="parameters" element="tns:chatLeerMensajeResponse" />
+  </wsdl:message>
+  <wsdl:message name="enviarCorreoElectronicoSoapIn">
+    <wsdl:part name="parameters" element="tns:enviarCorreoElectronico" />
+  </wsdl:message>
+  <wsdl:message name="enviarCorreoElectronicoSoapOut">
+    <wsdl:part name="parameters" element="tns:enviarCorreoElectronicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="agendaDtosSoapIn">
+    <wsdl:part name="parameters" element="tns:agendaDtos" />
+  </wsdl:message>
+  <wsdl:message name="agendaDtosSoapOut">
+    <wsdl:part name="parameters" element="tns:agendaDtosResponse" />
+  </wsdl:message>
+  <wsdl:message name="parametroDtoSoapIn">
+    <wsdl:part name="parameters" element="tns:parametroDto" />
+  </wsdl:message>
+  <wsdl:message name="parametroDtoSoapOut">
+    <wsdl:part name="parameters" element="tns:parametroDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="parametroModificarSoapIn">
+    <wsdl:part name="parameters" element="tns:parametroModificar" />
+  </wsdl:message>
+  <wsdl:message name="parametroModificarSoapOut">
+    <wsdl:part name="parameters" element="tns:parametroModificarResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AdminServiSoap">
+    <wsdl:operation name="cerrarSesion">
+      <wsdl:input message="tns:cerrarSesionSoapIn" />
+      <wsdl:output message="tns:cerrarSesionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="consultarSesion">
+      <wsdl:input message="tns:consultarSesionSoapIn" />
+      <wsdl:output message="tns:consultarSesionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="perfilUsuario">
+      <wsdl:input message="tns:perfilUsuarioSoapIn" />
+      <wsdl:output message="tns:perfilUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listarUsuarioDto">
+      <wsdl:input message="tns:listarUsuarioDtoSoapIn" />
+      <wsdl:output message="tns:listarUsuarioDtoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="enviarCuentaEmail">
+      <wsdl:input message="tns:enviarCuentaEmailSoapIn" />
+      <wsdl:output message="tns:enviarCuentaEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <wsdl:input message="tns:loginSoapIn" />
+      <wsdl:output message="tns:loginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="chatContactos">
+      <wsdl:input message="tns:chatContactosSoapIn" />
+      <wsdl:output message="tns:chatContactosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizarChatContactos">
+      <wsdl:input message="tns:actualizarChatContactosSoapIn" />
+      <wsdl:output message="tns:actualizarChatContactosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="chatLeerMensaje">
+      <wsdl:input message="tns:chatLeerMensajeSoapIn" />
+      <wsdl:output message="tns:chatLeerMensajeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="enviarCorreoElectronico">
+      <wsdl:input message="tns:enviarCorreoElectronicoSoapIn" />
+      <wsdl:output message="tns:enviarCorreoElectronicoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="agendaDtos">
+      <wsdl:input message="tns:agendaDtosSoapIn" />
+      <wsdl:output message="tns:agendaDtosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="parametroDto">
+      <wsdl:input message="tns:parametroDtoSoapIn" />
+      <wsdl:output message="tns:parametroDtoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="parametroModificar">
+      <wsdl:input message="tns:parametroModificarSoapIn" />
+      <wsdl:output message="tns:parametroModificarSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AdminServiSoap" type="tns:AdminServiSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="cerrarSesion">
+      <soap:operation soapAction="adm/cerrarSesion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultarSesion">
+      <soap:operation soapAction="adm/consultarSesion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="perfilUsuario">
+      <soap:operation soapAction="adm/perfilUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarUsuarioDto">
+      <soap:operation soapAction="adm/listarUsuarioDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enviarCuentaEmail">
+      <soap:operation soapAction="adm/enviarCuentaEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <soap:operation soapAction="adm/login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="chatContactos">
+      <soap:operation soapAction="adm/chatContactos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizarChatContactos">
+      <soap:operation soapAction="adm/actualizarChatContactos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="chatLeerMensaje">
+      <soap:operation soapAction="adm/chatLeerMensaje" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enviarCorreoElectronico">
+      <soap:operation soapAction="adm/enviarCorreoElectronico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agendaDtos">
+      <soap:operation soapAction="adm/agendaDtos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="parametroDto">
+      <soap:operation soapAction="adm/parametroDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="parametroModificar">
+      <soap:operation soapAction="adm/parametroModificar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdminServiSoap12" type="tns:AdminServiSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="cerrarSesion">
+      <soap12:operation soapAction="adm/cerrarSesion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultarSesion">
+      <soap12:operation soapAction="adm/consultarSesion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="perfilUsuario">
+      <soap12:operation soapAction="adm/perfilUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarUsuarioDto">
+      <soap12:operation soapAction="adm/listarUsuarioDto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enviarCuentaEmail">
+      <soap12:operation soapAction="adm/enviarCuentaEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <soap12:operation soapAction="adm/login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="chatContactos">
+      <soap12:operation soapAction="adm/chatContactos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizarChatContactos">
+      <soap12:operation soapAction="adm/actualizarChatContactos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="chatLeerMensaje">
+      <soap12:operation soapAction="adm/chatLeerMensaje" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enviarCorreoElectronico">
+      <soap12:operation soapAction="adm/enviarCorreoElectronico" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agendaDtos">
+      <soap12:operation soapAction="adm/agendaDtos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="parametroDto">
+      <soap12:operation soapAction="adm/parametroDto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="parametroModificar">
+      <soap12:operation soapAction="adm/parametroModificar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AdminServi">
+    <wsdl:port name="AdminServiSoap" binding="tns:AdminServiSoap">
+      <soap:address location="http://www.woodgroup.com.co/cms/servicios/AdminServi.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdminServiSoap12" binding="tns:AdminServiSoap12">
+      <soap12:address location="http://www.woodgroup.com.co/cms/servicios/AdminServi.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

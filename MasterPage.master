@@ -1,0 +1,135 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta name="generator" content="Microsoft Visual Studio, see http://msdn.microsoft.com/vstudio/" />
+    <meta name="Keywords" content="MADS Financiera" />
+    <meta name="Description" content="MADS Financiera" />
+    
+   
+    
+
+    <link href="css/ChromeBlackGridView.css" rel="stylesheet" type="text/css" />
+    <!--<link rel="shortcut icon" href="images/Logo.ico" />-->
+    <title>.::MADS::.</title>
+
+    <script language="javascript" type="text/javascript">
+    <!--
+    var segundos = 0;
+    function MostrarTiempoTranscurrido() {
+        segundos++;
+        //document.getElementById("IndicadorTiempo").innerHTML = "Tiempo transcurrido: " + segundos.toString();
+        window.status = 'T: ' + segundos.toString();
+        //alert('hola');
+    }
+
+    //El nombre del controlador que mantiene la sesión
+    var CONTROLADOR = "Mantenedor_sesiones.ashx";
+
+    //Ejecuta el script en segundo plano evitando así que caduque la sesión de esta página
+    function MantenSesion() {
+        var head = document.getElementsByTagName('head').item(0);
+        script = document.createElement('script');
+        script.src = CONTROLADOR;
+        script.setAttribute('type', 'text/javascript');
+        script.defer = true;
+        head.appendChild(script);
+    }
+
+    setInterval("MostrarTiempoTranscurrido()", 1000);
+
+    //Temporizador para matener la sesión activa
+    setInterval("MantenSesion()", 0.9 * (20 * 60000));
+
+    //-->
+    </script>
+                  
+
+
+
+
+
+    <style type="text/css">
+        .style1
+        {
+            height: 2px;
+        }
+        
+        
+    </style>
+
+
+
+    </head>
+<body>
+
+
+    <form id="form1" runat="server">
+        <!--TOP INFORMATION-->
+        <table align="center" >
+        <tr>
+        <td class="style1">
+        <div  align="center" style="background-image: url('images/cabecera.jpg'); width: 1300px; height: 183px; text-align:center; ">
+            
+            <div>
+                    <asp:TextBox ID="tResp" runat="server" BackColor="Transparent"
+                        BorderStyle="None" ForeColor="Red" Height="72px" 
+                        ReadOnly="true" Width="400px"></asp:TextBox>
+            </div>
+        </div>
+        </td>
+        </tr>
+        <!--TOP NAV-->
+        <tr>
+        <td bgcolor="Black">
+        <div class="none"><a href="#maincontent"></a></div>
+ <span  style="color:White;background-color:#bd003a;">      
+ <asp:Menu ID="Menu1" DataSourceID="xmlDataSource" runat="server" 
+          BackColor="Black" DynamicHorizontalOffset="2" 
+          ForeColor="#FFFFFF" Orientation="Horizontal" Font-Bold="True"   >
+          <DataBindings>
+            <asp:MenuItemBinding DataMember="MenuItem" 
+             NavigateUrlField="NavigateUrl" TextField="Text" ToolTipField="ToolTip"/>
+          </DataBindings>
+          <StaticSelectedStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+          <StaticMenuItemStyle HorizontalPadding="10px" VerticalPadding="2px" />
+          <DynamicMenuStyle BackColor="#4d4d4d" />
+          <DynamicSelectedStyle BackColor="#000000" ForeColor="White" />
+          <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+          <DynamicHoverStyle BackColor="Black" Font-Bold="True" ForeColor="White"/>
+          <StaticHoverStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+         <DataBindings>       
+        <asp:MenuItemBinding DataMember="MenuItem" Depth="0" TextField="Text" ValueField="Value" NavigateUrlField="Url"/>
+        <asp:MenuItemBinding DataMember="MenuItem" Depth="1" TextField="Text" ValueField="Value" NavigateUrlField="Url"/>
+        <asp:MenuItemBinding DataMember="MenuItem" Depth="2" TextField="Text" ValueField="Value" NavigateUrlField="Url"/>
+ </DataBindings>
+       </asp:Menu>
+       </span>
+        <asp:XmlDataSource ID="xmlDataSource" DataFile="~/App_Data/administrador.xml"  XPath = "/MenuItem/MenuItem"
+           runat="server"/> 
+          
+        
+         <asp:Panel ID="pUsuario" runat="server"
+                HorizontalAlign="Right">
+            <asp:Label ID="lbUsuario" runat="server" BackColor="Black" ForeColor="White"></asp:Label>
+        </asp:Panel>
+        </td>
+        </tr>
+        
+        <tr>
+        <td>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+        </td>
+        </tr>
+        </table>
+        <!--FOOTER-->
+        <div id="footer" align="center">
+            Versión: 3.1.2017</div>
+        <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" />
+    </form>
+      
+</body>
+    
+</html>

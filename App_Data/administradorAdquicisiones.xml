@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MenuItem Text="Start" Value="H" Enabled="false" Url="">
+  <MenuItem Text="Inicio" Value="0"  Url="Formularios.aspx">
+    
+  </MenuItem>
+
+
+
+  <MenuItem Text="Adquisiciones" Value="0"  Url="#">
+    <MenuItem Text="Pendientes aprobar" Value="0"  Url="adminAdquisiciones/ListarSolicitudes.aspx"/>
+    <MenuItem Text="Listar Solicitudes" Value="0"  Url="adminAdquisiciones/ListarSolicitudesTodas.aspx"/>
+  </MenuItem>
+
+  <MenuItem Text="Reportes Adquiciones" Value="0"  Url="#">
+    <MenuItem Text="Solicitudes" Value="0"  Url="adminAdquisiciones/ReporteGeneral.aspx"/>
+    <!--<MenuItem Text="Solicitudes 2" Value="0"  Url="adminAdquicisiones/ReporteGeneral2.aspx"/>-->
+    <MenuItem Text="Adquisiciones" Value="0"  Url="adminAdquiciones/ReporteGeneralAdquisiciones.aspx"/>
+  </MenuItem>
+
+
+  <MenuItem Text="Salir" Value="0"  Url="Logout.aspx">
+  </MenuItem>
+</MenuItem>
