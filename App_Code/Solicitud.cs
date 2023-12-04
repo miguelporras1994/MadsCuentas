@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Data;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-using System.Data.SqlClient;
 using System.Data.Common;
-using System.Collections;
+using System.Data.SqlClient;
 
 
 
@@ -22,7 +12,7 @@ public class Solicitud
 {
 
 
-    
+
     private string NUMERO_REGISTRO = "";
     private string CODIGOS_UNSPSC = "";
     private string DESCRIPCION = "";
@@ -38,9 +28,9 @@ public class Solicitud
     private int ID_TIPO_SOLICITUD = 0;
     private int ID_AREA = 0;
     private int ID_MODALIDAD_SELECCION = 0;
-	private string NOMBRES_APELLIDOS = "";
-	private string CARGO = "";
-	private string CORREO = "";
+    private string NOMBRES_APELLIDOS = "";
+    private string CARGO = "";
+    private string CORREO = "";
     private string EXTENSION = "";
     private string TIPO_DURACION = "";
     private int id_registro = 0;
@@ -51,7 +41,7 @@ public class Solicitud
     private int ID_JUSTIFICACION = 0;
     private int ID_OPERACION = 0;
     private string JUSTIFICACION_DESCRIPCION = "";
-     
+
 
     public Solicitud()
     {
@@ -196,7 +186,7 @@ public class Solicitud
     }
 
 
-    
+
     public int insertar()
     {
         ConexionBD conBD = new ConexionBD("bd_con_adq");
@@ -238,7 +228,7 @@ public class Solicitud
                 cmd.Parameters.Add("@ID_JUSTIFICACION", SqlDbType.Int).Value = ID_JUSTIFICACION;
                 cmd.Parameters.Add("@ID_OPERACION", SqlDbType.Int).Value = ID_OPERACION;
                 cmd.Parameters.Add("@JUSTIFICACION_DESCRIPCION", SqlDbType.VarChar).Value = JUSTIFICACION_DESCRIPCION;
-                
+
 
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Direction = ParameterDirection.Output;
 
@@ -275,9 +265,9 @@ public class Solicitud
 
 
                 cmd.Parameters.Add("@OBSERVACIONES", SqlDbType.VarChar).Value = observaciones;
-                
+
                 cmd.Parameters.Add("@ID_ADQUISICION", SqlDbType.Int).Value = this.id_registro;
-                
+
                 int rows = cmd.ExecuteNonQuery();
 
                 conn.Close();
@@ -330,7 +320,7 @@ public class Solicitud
 
     }
 
-    
+
 
     public string NumeroRegistro
     {
@@ -690,7 +680,7 @@ public class Solicitud
         {
             return FECHA_REGISTRO;
         }
-       
+
 
     }
 

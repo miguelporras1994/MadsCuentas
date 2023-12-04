@@ -38,7 +38,7 @@ public partial class WebFrmSeg : System.Web.UI.Page
 
     protected void Login_Click(object sender, EventArgs e)
     {
-        String adPath = "LDAP://minambiente.gov.co"; //Fully-qualified Domain Name
+        String adPath = "LDAP://ServerMiguel.practica.test"; //Fully-qualified Domain Name
         LdapAuthentication adAuth = new LdapAuthentication(adPath);
         Usuarios user;
         try

@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Data;
 using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-using System.Data.SqlClient;
+using System.Data;
 using System.Data.Common;
-using System.Collections;
+using System.Data.SqlClient;
 
 
 
@@ -26,7 +17,7 @@ public class Cuenta
     private string NUM_DOCUMENTO = "";
     private string NOMBRE_BENEFICIARIO = "";
     private string NUM_PAGo = "";
-    private double  VALOR_FACTURA = 0;
+    private double VALOR_FACTURA = 0;
     private DateTime FECHA_RADICADO = DateTime.Now;
     private int ID_ESTADO = 0;
     private string NUM_OBLIGACION = "";
@@ -77,15 +68,15 @@ public class Cuenta
     private int NO_PRESUPUESTAL = 0;
     private string CODIGO_CCP = "";
     private string CONSECUTIVO_FACTURA = "";
-    
-   
 
-	public Cuenta()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
+
+
+    public Cuenta()
+    {
+        //
+        // TODO: Add constructor logic here
+        //
+    }
 
     public Cuenta(int id_registro)
     {
@@ -112,7 +103,7 @@ public class Cuenta
                 while (reader.Read())
                 {
 
-                   
+
                     FECHA_RADICADO = (reader["FECHA_RADICADO"] != DBNull.Value) ? Convert.ToDateTime(reader["FECHA_RADICADO"].ToString()) : DateTime.Now;
                     FECHA_RECIBIDO_CONTABILIDAD = (reader["FECHA_RECIBIDO_CONTABILIDAD"] != DBNull.Value) ? Convert.ToDateTime(reader["FECHA_RECIBIDO_CONTABILIDAD"].ToString()) : DateTime.Now;
                     FECHA_RECIBIDO_TESORERIA = (reader["FECHA_RECIBIDO_TESORERIA"] != DBNull.Value) ? Convert.ToDateTime(reader["FECHA_RECIBIDO_TESORERIA"].ToString()) : DateTime.Now;
@@ -508,7 +499,7 @@ public class Cuenta
     }
 
 
-    public static void insertarRPObjeto(string rp,string objeto,int id_entidad)
+    public static void insertarRPObjeto(string rp, string objeto, int id_entidad)
     {
 
         ConexionBD conBD = new ConexionBD("bd_con");
@@ -533,12 +524,12 @@ public class Cuenta
                 int rows = cmd2.ExecuteNonQuery();
 
                 conn.Close();
-               
+
             }
         }
         catch (SqlException ex)
         {
-           
+
         }
     }
 
@@ -743,7 +734,7 @@ public class Cuenta
                 cmd.Parameters.Add("@REPORTE_FECHA_REGISTRO_CONTABILIDAD", SqlDbType.DateTime).Value = REPORTE_FECHA_REGISTRO_CONTABILIDAD;
                 cmd.Parameters.Add("@REPORTE_FECHA_CREACION_CONTABILIDAD", SqlDbType.DateTime).Value = REPORTE_FECHA_CREACION_CONTABILIDAD;
                 cmd.Parameters.Add("@ID_REGISTRO", SqlDbType.Int).Value = id_registro;
-  
+
                 int rows = cmd.ExecuteNonQuery();
 
                 conn.Close();
@@ -777,7 +768,7 @@ public class Cuenta
 
                 cmd.Parameters.Add("@ID_ESTADO", SqlDbType.Int).Value = ID_ESTADO;
                 cmd.Parameters.Add("@ID_REGISTRO", SqlDbType.Int).Value = id_registro;
-                
+
                 int rows = cmd.ExecuteNonQuery();
 
                 conn.Close();
@@ -1007,7 +998,7 @@ public class Cuenta
                 SqlCommand cmd = new SqlCommand(sql, (SqlConnection)conn);
                 //cmd.CommandType = CommandType.StoredProcedure;
 
-                
+
                 cmd.Parameters.Add("@ID_REGISTRO", SqlDbType.Int).Value = id_registro;
                 cmd.Parameters.Add("@REPORTE_VALOR_BRUTO", SqlDbType.Decimal).Value = REPORTE_VALOR_BRUTO;
                 cmd.Parameters.Add("@REPORTE_VALOR_NETO", SqlDbType.Decimal).Value = REPORTE_VALOR_NETO;
@@ -1071,7 +1062,7 @@ public class Cuenta
 
     }
 
-    public int insertarLOG(string usuario,string detalle,string operacion,string fuente)
+    public int insertarLOG(string usuario, string detalle, string operacion, string fuente)
     {
         ConexionBD conBD = new ConexionBD("bd_con");
 
@@ -1106,7 +1097,7 @@ public class Cuenta
 
     }
 
-    public int insertarLOG(string usuario, string detalle, string operacion, string fuente,int ID_GRUPO_DEVOLUCION)
+    public int insertarLOG(string usuario, string detalle, string operacion, string fuente, int ID_GRUPO_DEVOLUCION)
     {
         ConexionBD conBD = new ConexionBD("bd_con");
 
@@ -1157,7 +1148,7 @@ public class Cuenta
                 //cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.Add("@ID_REGISTRO", SqlDbType.Int).Value = id_registro;
-               
+
                 int rows = cmd.ExecuteNonQuery();
 
                 conn.Close();
@@ -1412,7 +1403,7 @@ public class Cuenta
         {
             Correo correo = new Correo();
 
-            string cuerpo_correo =  @"<html xmlns='http://www.w3.org/1999/xhtml\'>
+            string cuerpo_correo = @"<html xmlns='http://www.w3.org/1999/xhtml\'>
                 <head>
                 <meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1' />
 
@@ -1435,7 +1426,7 @@ public class Cuenta
             </body>
             </html>
             ";
-            
+
             //Correo.enviarHTML(CORREO, "Radicacion de cuenta " + this.id_registro.ToString(), cuerpo_correo, "");
         }
         catch { }
@@ -1468,7 +1459,7 @@ La subdirecci&oacute;n Administrativa y Financiera, le comunica que su cuenta ra
 this.id_registro + ", ser&aacute; abonada en el trascurso del d&iacute;a en su cuenta bancaria registrada en la Entidad, por favor revisar e informar cualquier novedad a las extensiones  1352 o 1344.<br/><br/>" +
 
 "Cordialmente,<br/><br/>" +
- 
+
 "Subdirecci&oacute;n Administrativa y Financiera";
 
             //Este mensaje es una notificaci&oacute;n autom&aacute;tica, por lo tanto le solicitamos no responder a esta direcci&oacute;n de correo
@@ -1655,7 +1646,7 @@ this.id_registro + ", ser&aacute; abonada en el trascurso del d&iacute;a en su c
                 if (o == null)
                     resp = 0;
                 else
-                    resp = Utiles.validarNumeroToDouble( o.ToString());
+                    resp = Utiles.validarNumeroToDouble(o.ToString());
 
                 conn.Close();
 
@@ -2055,7 +2046,7 @@ this.id_registro + ", ser&aacute; abonada en el trascurso del d&iacute;a en su c
                 SqlCommand cmd = new SqlCommand("INSERTAR_CUENTA", (SqlConnection)conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                
+
                 cmd.Parameters.Add("@ORDEN_PAGO", SqlDbType.VarChar).Value = ORDEN_PAGO;
                 cmd.Parameters.Add("@ID_TIPO_DOCUMENTO", SqlDbType.Int).Value = ID_TIPO_DOCUMENTO;
                 cmd.Parameters.Add("@NUM_DOCUMENTO", SqlDbType.VarChar).Value = NUM_DOCUMENTO;
@@ -2568,7 +2559,7 @@ this.id_registro + ", ser&aacute; abonada en el trascurso del d&iacute;a en su c
 
     }
 
-    
+
     public string NumeroObligacion
     {
         get
@@ -2660,7 +2651,7 @@ this.id_registro + ", ser&aacute; abonada en el trascurso del d&iacute;a en su c
 
     }
 
-   
+
 
     public string OrdenPago
     {
@@ -2732,7 +2723,7 @@ this.id_registro + ", ser&aacute; abonada en el trascurso del d&iacute;a en su c
     {
         get
         {
-            return ID_ENTIDAD ;
+            return ID_ENTIDAD;
         }
         set
         {

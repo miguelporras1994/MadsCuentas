@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Data;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-using System.Data.SqlClient;
 using System.Data.Common;
-using System.Collections;
+using System.Data.SqlClient;
 
 
 
@@ -303,7 +293,7 @@ public class Adquisicion
                 cmd.Parameters.Add("@JUSTIFICACION_DESCRIPCION", SqlDbType.VarChar).Value = JUSTIFICACION_DESCRIPCION;
                 cmd.Parameters.Add("@ID_ADQUISICION", SqlDbType.Int).Value = id_registro;
 
-               
+
                 int rows = cmd.ExecuteNonQuery();
 
                 conn.Close();
@@ -365,7 +355,7 @@ public class Adquisicion
 
                 string sql = "DELETE FROM ADQUISICIONES WHERE ID_ADQUISICION = @ID_ADQUISICION";
                 SqlCommand cmd = new SqlCommand(sql, (SqlConnection)conn);
-              
+
                 cmd.Parameters.Add("@ID_ADQUISICION", SqlDbType.Int).Value = id_registro;
 
 

@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Data;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-using System.Data.SqlClient;
 using System.Data.Common;
-using System.Collections;
+using System.Data.SqlClient;
 
 
 
@@ -52,7 +42,7 @@ public class Solicitud_2
     private int ID_OPERACION = 0;
     private string JUSTIFICACION_DESCRIPCION = "";
     private string ACTIVIDAD_PRINCIPAL = "";
-	private string ACTIVIDAD_DESAGREGADA = "";
+    private string ACTIVIDAD_DESAGREGADA = "";
     private int REQUIERE_CONTRATACION = 0;
     private int ID_ENLACE_JURIDICO = 0;
     private int ID_ENLACE_INVESTIGACION_MERCADO = 0;
@@ -726,7 +716,8 @@ public class Solicitud_2
 
     }
 
-    public string ActividadDesagregada{
+    public string ActividadDesagregada
+    {
 
         get
         {

@@ -1,43 +1,34 @@
 ﻿using System;
-using System.Data;
 using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
 
 /// <summary>
 /// Descripción breve de Correo
 /// </summary>
 public class Correo
 {
-	public Correo()
-	{
-		//
-		// TODO: Agregar aquí la lógica del constructor
-		//
-	}
+    public Correo()
+    {
+        //
+        // TODO: Agregar aquí la lógica del constructor
+        //
+    }
 
-    public static string enviar(string correoEnviar,string asunto,string cuerpo,string copia)
+    public static string enviar(string correoEnviar, string asunto, string cuerpo, string copia)
     {
 
 
         System.Net.Mail.MailMessage correo = new System.Net.Mail.MailMessage();
         correo.From = new System.Net.Mail.MailAddress(ConfigurationSettings.AppSettings["CorreoRemitente"]);
-        
-        //Adicionar los distintos correos que vienen separados por coma o punto y coma
-       Tokens c = new Tokens(correoEnviar, new char[] { ',', ';' });
-       foreach (string itemC in c)
-       {
-           correo.To.Add(itemC.ToString());
-       }
 
-       // correo.To.Add(correoEnviar);
-        
+        //Adicionar los distintos correos que vienen separados por coma o punto y coma
+        Tokens c = new Tokens(correoEnviar, new char[] { ',', ';' });
+        foreach (string itemC in c)
+        {
+            correo.To.Add(itemC.ToString());
+        }
+
+        // correo.To.Add(correoEnviar);
+
         correo.Subject = asunto;
         correo.Body = cuerpo;
         correo.IsBodyHtml = false;
@@ -121,7 +112,7 @@ public class Correo
     }
 
 
-    public static string enviar(string correoEnviar, string asunto, string cuerpo, string copia,string pathAtt)
+    public static string enviar(string correoEnviar, string asunto, string cuerpo, string copia, string pathAtt)
     {
 
 

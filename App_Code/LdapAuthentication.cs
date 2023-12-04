@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Text;
-using System.Collections;
 using System.DirectoryServices;
+using System.Text;
 
 namespace FormsAuth
 {
@@ -17,6 +16,7 @@ namespace FormsAuth
 
         public bool IsAuthenticated(String domain, String username, String pwd)
         {
+            domain = "practica";
             String domainAndUsername = domain + @"\" + username;
             DirectoryEntry entry = new DirectoryEntry(_path, domainAndUsername, pwd);
 

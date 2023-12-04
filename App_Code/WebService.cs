@@ -1,15 +1,11 @@
-﻿using System.Web.Script.Services;
-using AjaxControlToolkit;
+﻿using AjaxControlToolkit;
 using System;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Data.SqlClient;
-using System.Data;
-using System.Xml;
 using System.Data.Common;
+using System.Data.SqlClient;
+using System.Web.Services;
+using System.Xml;
 
 /// <summary>
 /// Descripción breve de WebService
@@ -18,13 +14,15 @@ using System.Data.Common;
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 // Para permitir que se llame a este servicio web desde un script, usando ASP.NET AJAX, quite la marca de comentario de la línea siguiente. 
 [System.Web.Script.Services.ScriptService]
-public class WebService : System.Web.Services.WebService {
+public class WebService : System.Web.Services.WebService
+{
 
     // Member variables
     private static XmlDocument _document;
     private static object _lock = new object();
 
-    public WebService () {
+    public WebService()
+    {
 
         //Eliminar la marca de comentario de la línea siguiente si utiliza los componentes diseñados 
         //InitializeComponent(); 
@@ -309,7 +307,7 @@ public class WebService : System.Web.Services.WebService {
                 comm.Parameters.AddWithValue("@nombre_reporte", idReporte);
                 SqlDataReader dr = comm.ExecuteReader();
 
-                
+
 
                 while (dr.Read())
                 {

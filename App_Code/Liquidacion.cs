@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Data;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-using System.Data.SqlClient;
 using System.Data.Common;
-using System.Collections;
+using System.Data.SqlClient;
 
 
 
@@ -20,38 +10,38 @@ using System.Collections;
 /// </summary>
 public class Liquidacion
 {
-           private int ID_RADICACION = 0;
-           private int ID_REGISTRO = 0;
-           private double VALOR_TOTAL  = 0;
-           private double IBC  = 0;
-           private double SALUD  = 0;
-           private double PENSION  = 0;
-           private double ARL  = 0;
-           private double AFC  = 0;
-           private double INT_VIVIENDA  = 0;
-           private double PREPAGADA  = 0;
-           private double DEPENDIENTES  = 0;
-           private double RENTA_EXENTA  = 0;
-           private double BASE_GRAVABLE_RETEFUENTE_383  = 0;
-           private double BASE_GRAVABLE_RETEFUENTE_384 = 0;
-           private double RETE_FUENTE_UVT_383  = 0;
-           private double RETE_FUENTE_UVT_384 = 0;
-           private double VALOR_RF_ART_383  = 0;
-           private double VALOR_RF_ART_384  = 0;
-           private double ICA  = 0;
-           private double RETE_IVA  = 0;
-           private double TOTAL_PAGAR_383  = 0;
-           private double TOTAL_PAGAR_384  = 0;
-           private double FACTOR_RETE_IVA = 0;
-           private double FACTOR_RETE_ICA = 0;
-           private double FACTOR_RETE_FUENTE = 0;
-           private string NOTA = "";
-           private double BASE_RETE_ICA_383 = 0;
-           private double BASE_RETE_ICA_384 = 0;
-            private string METODO = "";
-            private string DESCRIPCION_OTROS_DESCUENTOS = "";
-            private double VALOR_OTROS_DESCUENTOS = 0;
-            private double BASE_RETE_IVA = 0;
+    private int ID_RADICACION = 0;
+    private int ID_REGISTRO = 0;
+    private double VALOR_TOTAL = 0;
+    private double IBC = 0;
+    private double SALUD = 0;
+    private double PENSION = 0;
+    private double ARL = 0;
+    private double AFC = 0;
+    private double INT_VIVIENDA = 0;
+    private double PREPAGADA = 0;
+    private double DEPENDIENTES = 0;
+    private double RENTA_EXENTA = 0;
+    private double BASE_GRAVABLE_RETEFUENTE_383 = 0;
+    private double BASE_GRAVABLE_RETEFUENTE_384 = 0;
+    private double RETE_FUENTE_UVT_383 = 0;
+    private double RETE_FUENTE_UVT_384 = 0;
+    private double VALOR_RF_ART_383 = 0;
+    private double VALOR_RF_ART_384 = 0;
+    private double ICA = 0;
+    private double RETE_IVA = 0;
+    private double TOTAL_PAGAR_383 = 0;
+    private double TOTAL_PAGAR_384 = 0;
+    private double FACTOR_RETE_IVA = 0;
+    private double FACTOR_RETE_ICA = 0;
+    private double FACTOR_RETE_FUENTE = 0;
+    private string NOTA = "";
+    private double BASE_RETE_ICA_383 = 0;
+    private double BASE_RETE_ICA_384 = 0;
+    private string METODO = "";
+    private string DESCRIPCION_OTROS_DESCUENTOS = "";
+    private double VALOR_OTROS_DESCUENTOS = 0;
+    private double BASE_RETE_IVA = 0;
 
 
 
@@ -290,7 +280,7 @@ public class Liquidacion
                 cmd.Parameters.Add("@BASE_RETE_IVA", SqlDbType.Decimal).Value = BASE_RETE_IVA;
 
                 cmd.Parameters.Add("@NOTA", SqlDbType.VarChar).Value = NOTA;
-               
+
 
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Direction = ParameterDirection.Output;
 
@@ -355,7 +345,7 @@ public class Liquidacion
     //}
 
 
-   
+
 
 
 
@@ -431,7 +421,7 @@ public class Liquidacion
         {
             return METODO;
         }
-        
+
     }
 
     public double ValorTotal

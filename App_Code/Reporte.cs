@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Data;
 using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-using System.Data.SqlClient;
+using System.Data;
 using System.Data.Common;
-using System.Collections;
+using System.Data.SqlClient;
 
 
 
@@ -83,7 +74,7 @@ public class Reporte
 
 
 
-    public static DataTable ReporteGeneral(int ano, int id_entidad, string numero_doc, string nombre, string cxp, string correo, string orden_pago, int tipo_solicitud, string fecha_ini, string fecha_fin,string id_reporte)  //ERROR E1001  
+    public static DataTable ReporteGeneral(int ano, int id_entidad, string numero_doc, string nombre, string cxp, string correo, string orden_pago, int tipo_solicitud, string fecha_ini, string fecha_fin, string id_reporte)  //ERROR E1001  
     {
 
         ConexionBD conBD = new ConexionBD("bd_con");
@@ -157,16 +148,16 @@ public class Reporte
                 //else
                 //{
 
-                    if (fecha_ini.ToString() != "" && fecha_fin.ToString() != "")
-                    {
+                if (fecha_ini.ToString() != "" && fecha_fin.ToString() != "")
+                {
 
 
 
-                        select += " AND [FECHA_RADICADO] BETWEEN CAST('" + DateTime.ParseExact(fecha_ini.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 00:00:00' AS DATETIME)";
-                        select += " AND CAST('" + DateTime.ParseExact(fecha_fin.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 23:59:59' AS DATETIME)";
+                    select += " AND [FECHA_RADICADO] BETWEEN CAST('" + DateTime.ParseExact(fecha_ini.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 00:00:00' AS DATETIME)";
+                    select += " AND CAST('" + DateTime.ParseExact(fecha_fin.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 23:59:59' AS DATETIME)";
 
 
-                    }
+                }
                 //    else
                 //    {
                 //        //select += " and year(FECHA_RADICADO) = YEAR(GETDATE()) ";
@@ -261,16 +252,16 @@ public class Reporte
                 //else
                 //{
 
-                    if (fecha_ini.ToString() != "" && fecha_fin.ToString() != "")
-                    {
+                if (fecha_ini.ToString() != "" && fecha_fin.ToString() != "")
+                {
 
 
 
-                        select += " AND [FECHA_RADICADO] BETWEEN CAST('" + DateTime.ParseExact(fecha_ini.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 00:00:00' AS DATETIME)";
-                        select += " AND CAST('" + DateTime.ParseExact(fecha_fin.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 23:59:59' AS DATETIME)";
+                    select += " AND [FECHA_RADICADO] BETWEEN CAST('" + DateTime.ParseExact(fecha_ini.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 00:00:00' AS DATETIME)";
+                    select += " AND CAST('" + DateTime.ParseExact(fecha_fin.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 23:59:59' AS DATETIME)";
 
 
-                    }
+                }
                 //    else
                 //    {
                 //        //select += " and year(FECHA_RADICADO) = YEAR(GETDATE()) ";
@@ -365,16 +356,16 @@ public class Reporte
                 //else
                 //{
 
-                    if (fecha_ini.ToString() != "" && fecha_fin.ToString() != "")
-                    {
+                if (fecha_ini.ToString() != "" && fecha_fin.ToString() != "")
+                {
 
 
 
-                        select += " AND [FECHA_RADICADO] BETWEEN CAST('" + DateTime.ParseExact(fecha_ini.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 00:00:00' AS DATETIME)";
-                        select += " AND CAST('" + DateTime.ParseExact(fecha_fin.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 23:59:59' AS DATETIME)";
+                    select += " AND [FECHA_RADICADO] BETWEEN CAST('" + DateTime.ParseExact(fecha_ini.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 00:00:00' AS DATETIME)";
+                    select += " AND CAST('" + DateTime.ParseExact(fecha_fin.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 23:59:59' AS DATETIME)";
 
 
-                    }
+                }
                 //    else
                 //    {
                 //        //select += " and year(FECHA_RADICADO) = YEAR(GETDATE()) ";
@@ -469,16 +460,16 @@ public class Reporte
                 //else
                 //{
 
-                    if (fecha_ini.ToString() != "" && fecha_fin.ToString() != "")
-                    {
+                if (fecha_ini.ToString() != "" && fecha_fin.ToString() != "")
+                {
 
 
 
-                        select += " AND [FECHA_RADICADO] BETWEEN CAST('" + DateTime.ParseExact(fecha_ini.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 00:00:00' AS DATETIME)";
-                        select += " AND CAST('" + DateTime.ParseExact(fecha_fin.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 23:59:59' AS DATETIME)";
+                    select += " AND [FECHA_RADICADO] BETWEEN CAST('" + DateTime.ParseExact(fecha_ini.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 00:00:00' AS DATETIME)";
+                    select += " AND CAST('" + DateTime.ParseExact(fecha_fin.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 23:59:59' AS DATETIME)";
 
 
-                    }
+                }
                 //    else
                 //    {
                 //        //select += " and year(FECHA_RADICADO) = YEAR(GETDATE()) ";
@@ -508,7 +499,7 @@ public class Reporte
     }
 
 
-    public static DataTable ListarCuentasObligacion(int id_entidad, string numero_doc, string nombre, string fecha_ini, string fecha_fin,int id_registro,string asignado_a,bool sin_obligacion)  //ERROR E1001  
+    public static DataTable ListarCuentasObligacion(int id_entidad, string numero_doc, string nombre, string fecha_ini, string fecha_fin, int id_registro, string asignado_a, bool sin_obligacion)  //ERROR E1001  
     {
 
         ConexionBD conBD = new ConexionBD("bd_con");
@@ -547,7 +538,7 @@ public class Reporte
                     select += " AND CONTABILIDAD_ASIGNADO_A LIKE '%" + asignado_a.Trim() + "%'";
                 }
 
-               
+
 
                 if (id_entidad != 0)
                 {
@@ -566,7 +557,7 @@ public class Reporte
 
 
                 }
-               
+
 
                 select += " ORDER BY ID_REGISTRO DESC";
 
@@ -733,16 +724,16 @@ public class Reporte
                 //else
                 //{
 
-                    if (fecha_ini.ToString() != "" && fecha_fin.ToString() != "")
-                    {
+                if (fecha_ini.ToString() != "" && fecha_fin.ToString() != "")
+                {
 
 
 
-                        select += " AND [FECHA_RADICADO] BETWEEN CAST('" + DateTime.ParseExact(fecha_ini.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 00:00:00' AS DATETIME)";
-                        select += " AND CAST('" + DateTime.ParseExact(fecha_fin.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 23:59:59' AS DATETIME)";
+                    select += " AND [FECHA_RADICADO] BETWEEN CAST('" + DateTime.ParseExact(fecha_ini.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 00:00:00' AS DATETIME)";
+                    select += " AND CAST('" + DateTime.ParseExact(fecha_fin.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 23:59:59' AS DATETIME)";
 
 
-                    }
+                }
                 //    else
                 //    {
                 //        //select += " and year(FECHA_RADICADO) = YEAR(GETDATE()) ";
@@ -837,16 +828,16 @@ public class Reporte
                 //else
                 //{
 
-                    if (fecha_ini.ToString() != "" && fecha_fin.ToString() != "")
-                    {
+                if (fecha_ini.ToString() != "" && fecha_fin.ToString() != "")
+                {
 
 
 
-                        select += " AND [FECHA_RADICADO] BETWEEN CAST('" + DateTime.ParseExact(fecha_ini.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 00:00:00' AS DATETIME)";
-                        select += " AND CAST('" + DateTime.ParseExact(fecha_fin.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 23:59:59' AS DATETIME)";
+                    select += " AND [FECHA_RADICADO] BETWEEN CAST('" + DateTime.ParseExact(fecha_ini.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 00:00:00' AS DATETIME)";
+                    select += " AND CAST('" + DateTime.ParseExact(fecha_fin.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 23:59:59' AS DATETIME)";
 
 
-                    }
+                }
                 //    else
                 //    {
                 //        //select += " and year(FECHA_RADICADO) = YEAR(GETDATE()) ";
@@ -875,7 +866,7 @@ public class Reporte
     }
 
 
-    public static DataTable Adjuntar(int ano, int id_entidad, string numero_doc, string nombre, string cxp, string correo, string orden_pago, int tipo_solicitud, string fecha_ini, string fecha_fin,bool sin_adjuntos,bool radicados_hoy)  //ERROR E1001  
+    public static DataTable Adjuntar(int ano, int id_entidad, string numero_doc, string nombre, string cxp, string correo, string orden_pago, int tipo_solicitud, string fecha_ini, string fecha_fin, bool sin_adjuntos, bool radicados_hoy)  //ERROR E1001  
     {
 
         ConexionBD conBD = new ConexionBD("bd_con");
@@ -941,16 +932,16 @@ public class Reporte
                 //else
                 //{
 
-                    if (fecha_ini.ToString() != "" && fecha_fin.ToString() != "")
-                    {
+                if (fecha_ini.ToString() != "" && fecha_fin.ToString() != "")
+                {
 
 
 
-                        select += " AND [FECHA_RADICADO] BETWEEN CAST('" + DateTime.ParseExact(fecha_ini.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 00:00:00' AS DATETIME)";
-                        select += " AND CAST('" + DateTime.ParseExact(fecha_fin.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 23:59:59' AS DATETIME)";
+                    select += " AND [FECHA_RADICADO] BETWEEN CAST('" + DateTime.ParseExact(fecha_ini.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 00:00:00' AS DATETIME)";
+                    select += " AND CAST('" + DateTime.ParseExact(fecha_fin.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 23:59:59' AS DATETIME)";
 
 
-                    }
+                }
                 //    else
                 //    {
                 //        //select += " and year(FECHA_RADICADO) = YEAR(GETDATE()) ";
@@ -1057,16 +1048,16 @@ public class Reporte
                 //else
                 //{
 
-                    if (fecha_ini.ToString() != "" && fecha_fin.ToString() != "")
-                    {
+                if (fecha_ini.ToString() != "" && fecha_fin.ToString() != "")
+                {
 
 
 
-                        select += " AND [FECHA_RADICADO] BETWEEN CAST('" + DateTime.ParseExact(fecha_ini.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 00:00:00' AS DATETIME)";
-                        select += " AND CAST('" + DateTime.ParseExact(fecha_fin.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 23:59:59' AS DATETIME)";
+                    select += " AND [FECHA_RADICADO] BETWEEN CAST('" + DateTime.ParseExact(fecha_ini.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 00:00:00' AS DATETIME)";
+                    select += " AND CAST('" + DateTime.ParseExact(fecha_fin.ToString(), ConfigurationSettings.AppSettings["FormatoFechaQueryParseExact"], null).ToString(ConfigurationSettings.AppSettings["FormatoFechaQuery"]) + " 23:59:59' AS DATETIME)";
 
 
-                    }
+                }
                 //    else
                 //    {
                 //        //select += " and year(FECHA_RADICADO) = YEAR(GETDATE()) ";
@@ -1134,7 +1125,7 @@ public class Reporte
         return dtregistros;
     }
 
-    public static DataTable ReporteCuentasAdjuntar(int ano,int id_radicado,string documento,string nombre)  //ERROR E1001  
+    public static DataTable ReporteCuentasAdjuntar(int ano, int id_radicado, string documento, string nombre)  //ERROR E1001  
     {
 
         ConexionBD conBD = new ConexionBD("bd_con");
@@ -1155,7 +1146,7 @@ public class Reporte
                     select += " AND NUM_DOCUMENTO = '" + documento + "'";
                 }
 
-               
+
 
                 if (nombre.Trim() != "")
                 {
@@ -1166,7 +1157,8 @@ public class Reporte
                 if (ano > 0)
                 {
                     select += " and year(FECHA_RADICADO) = " + ano.ToString();
-                }else
+                }
+                else
                 {
                     select += " and year(FECHA_RADICADO) = YEAR(GETDATE()) ";
                 }

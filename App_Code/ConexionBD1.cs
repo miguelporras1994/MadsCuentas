@@ -1,15 +1,14 @@
-﻿
-/// <summary>
-/// Clase para conectarse a la base de datos
-/// </summary>
+﻿using System.Configuration;
+using System.Data.Common;
+
 //public class ConexionBD
 //{
 //    private string source;
 
-//	public ConexionBD(string source)
-//	{
+//    public ConexionBD(string source)
+//    {
 //        this.source = source;
-//	}
+//    }
 
 
 //    public DbConnection GetDatabaseConnection()

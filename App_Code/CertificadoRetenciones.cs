@@ -1,31 +1,23 @@
 ﻿using System;
-using System.Data;
 using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-using System.Data.SqlClient;
+using System.Data;
 using System.Data.Common;
-using System.Collections;
+using System.Data.SqlClient;
+using System.Web;
 /// <summary>
 /// Summary description for CertificadoRetenciones
 /// </summary>
 public class CertificadoRetenciones
 {
-	public CertificadoRetenciones()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
+    public CertificadoRetenciones()
+    {
+        //
+        // TODO: Add constructor logic here
+        //
+    }
 
 
-    public int insertar(string cedula,string correo,int ano)
+    public int insertar(string cedula, string correo, int ano)
     {
         ConexionBD conBD = new ConexionBD("bd_con");
         int id_solicitud = 0;
@@ -44,7 +36,7 @@ public class CertificadoRetenciones
                 cmd.Parameters.Add("@CEDULA", SqlDbType.VarChar).Value = cedula;
                 cmd.Parameters.Add("@CORREO", SqlDbType.VarChar).Value = correo;
                 cmd.Parameters.Add("@ANO", SqlDbType.Int).Value = ano;
-                
+
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Direction = ParameterDirection.Output;
 
                 int rows = cmd.ExecuteNonQuery();
@@ -171,10 +163,10 @@ public class CertificadoRetenciones
     }
 
 
-    public int atender(int id_solicitud,string usuario,string certificado)
+    public int atender(int id_solicitud, string usuario, string certificado)
     {
         ConexionBD conBD = new ConexionBD("bd_con");
-       
+
 
         try
         {
@@ -192,7 +184,7 @@ public class CertificadoRetenciones
                 cmd.Parameters.Add("@CERTIFICADO", SqlDbType.VarChar).Value = certificado;
 
                 int rows = cmd.ExecuteNonQuery();
-                
+
                 conn.Close();
 
                 return rows;
@@ -260,7 +252,7 @@ public class CertificadoRetenciones
 
 
                 cmd.Parameters.Add("@ID_SOLICITUD", SqlDbType.Int).Value = id_solicitud;
-               
+
                 int rows = cmd.ExecuteNonQuery();
 
                 conn.Close();
@@ -276,7 +268,7 @@ public class CertificadoRetenciones
 
     }
 
-    public int solicitudPreviamenteEnviada(string cedula,int ano)
+    public int solicitudPreviamenteEnviada(string cedula, int ano)
     {
 
         ConexionBD conBD = new ConexionBD("bd_con");
@@ -331,7 +323,7 @@ public class CertificadoRetenciones
             <body>";
 
             cuerpo_correo = "Estimado usuario<br /><br />";
-            cuerpo_correo += "En respuesta a la solicitud radicada por ud, se realiza el envio del certificado de retenciones "+  datos.Rows[0]["ANO"].ToString();
+            cuerpo_correo += "En respuesta a la solicitud radicada por ud, se realiza el envio del certificado de retenciones " + datos.Rows[0]["ANO"].ToString();
 
             //Este mensaje es una notificaci&oacute;n autom&aacute;tica, por lo tanto le solicitamos no responder a esta direcci&oacute;n de correo
 
@@ -344,7 +336,8 @@ public class CertificadoRetenciones
 
             Correo.enviarHTML(datos.Rows[0]["CORREO"].ToString(), "Certificado de retenciones", cuerpo_correo, ConfigurationSettings.AppSettings["CorreoCopia"], HttpContext.Current.Server.MapPath("~/Certificados/") + datos.Rows[0]["CERTIFICADO"].ToString());
         }
-        catch(Exception ex) {
+        catch (Exception ex)
+        {
 
             throw new Exception("Error al enviar el correo: " + ex.Message.Normalize());
         }
@@ -352,7 +345,7 @@ public class CertificadoRetenciones
     }
 
 
-    public void correoCertificadoSinAdjunto(int id_solicitud,string observaciones)
+    public void correoCertificadoSinAdjunto(int id_solicitud, string observaciones)
     {
 
         try
@@ -395,7 +388,7 @@ public class CertificadoRetenciones
 
     }
 
-    public void correoCertificado(int id_solicitud,string correo_enviar)
+    public void correoCertificado(int id_solicitud, string correo_enviar)
     {
 
         try

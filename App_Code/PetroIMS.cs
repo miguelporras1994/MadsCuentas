@@ -1,50 +1,39 @@
 ﻿using System;
-using System.Data;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Xml;
-using System.Data.SqlClient;
 using System.Data.Common;
+using System.Data.SqlClient;
+using System.Text;
 
 /// <summary>
 /// Descripción breve de PetroIMS
 /// </summary>
 public class PetroIMS
 {
-	public PetroIMS()
-	{
-		//
-		// TODO: Agregar aquí la lógica del constructor
-		//
-	}
-
-
-    public static System.Boolean IsNumeric (System.Object Expression)
+    public PetroIMS()
     {
-        if(Expression == null || Expression is DateTime || Expression == DBNull.Value)
+        //
+        // TODO: Agregar aquí la lógica del constructor
+        //
+    }
+
+
+    public static System.Boolean IsNumeric(System.Object Expression)
+    {
+        if (Expression == null || Expression is DateTime || Expression == DBNull.Value)
             return false;
 
-        if(Expression is Int16 || Expression is Int32 || Expression is Int64 || Expression is Decimal || Expression is Single || Expression is Double || Expression is Boolean)
+        if (Expression is Int16 || Expression is Int32 || Expression is Int64 || Expression is Decimal || Expression is Single || Expression is Double || Expression is Boolean)
             return true;
-      
+
         try
         {
-            if(Expression is string)
+            if (Expression is string)
                 Double.Parse(Expression as string);
             else
                 Double.Parse(Expression.ToString());
             return true;
-         } catch {} // just dismiss errors but return false
-         return false;
+        }
+        catch { } // just dismiss errors but return false
+        return false;
     }
 
     public static int validarNumeroToInt(string numero)
@@ -57,7 +46,7 @@ public class PetroIMS
 
     }
 
-    
+
     public static float validarNumeroToFloat(string numero)
     {
 
@@ -67,7 +56,7 @@ public class PetroIMS
             return 0;
 
     }
-    
+
 
     public static string formatearCaracteresXML(string text)
     {
@@ -88,7 +77,7 @@ public class PetroIMS
         return result.ToString();
     }
 
-    public static bool permisoUsuarioReporte(int id_usuario,string reporte)
+    public static bool permisoUsuarioReporte(int id_usuario, string reporte)
     {
 
         ConexionBD conBD = new ConexionBD("petrominerales");
@@ -157,7 +146,7 @@ public class PetroIMS
     }
 
 
-  
+
 
     public static string obtenerNombreItem(string tabla, string columna, string id_tabla, string valor, bool es_entero)
     {

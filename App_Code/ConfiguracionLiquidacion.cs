@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Data;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-using System.Data.SqlClient;
 using System.Data.Common;
-using System.Collections;
+using System.Data.SqlClient;
 
 
 
@@ -41,10 +31,10 @@ public class ConfiguracionLiquidacion
     private double SALARIO_MINIMO = 0;
     private double FACTOR_PAGO_FSP = 0;
     private double PORC_LIMITE_INGRESO_HONORARIOS = 0;
-    
 
 
-    
+
+
 
     public void obtenerDatos()  //ERROR E1001  
     {
@@ -67,7 +57,7 @@ public class ConfiguracionLiquidacion
                     IBC = Utiles.validarNumeroToDouble(reader["IBC"].ToString());
                     IVA = Utiles.validarNumeroToDouble(reader["IVA"].ToString());
                     SALUD = Utiles.validarNumeroToDouble(reader["SALUD"].ToString());
-                    
+
                     ARL = Utiles.validarNumeroToDouble(reader["ARL"].ToString());
                     AFC = Utiles.validarNumeroToDouble(reader["AFC"].ToString());
                     RENTA_EXTERNA = Utiles.validarNumeroToDouble(reader["RENTA_EXTERNA"].ToString());
@@ -85,7 +75,7 @@ public class ConfiguracionLiquidacion
                     SALARIO_MINIMO = Utiles.validarNumeroToDouble(reader["SALARIO_MINIMO"].ToString());
                     FACTOR_PAGO_FSP = Utiles.validarNumeroToInt(reader["FACTOR_PAGO_FSP"].ToString());
                     PORC_LIMITE_INGRESO_HONORARIOS = Utiles.validarNumeroToDouble(reader["PORC_LIMITE_INGRESO_HONORARIOS"].ToString());
-                    
+
                 }
 
                 conn.Close();
@@ -133,7 +123,7 @@ public class ConfiguracionLiquidacion
             {
                 conn.Open();
 
-                string select = "SELECT RETENCION FROM TARIFA_RETENCION_ART_384 WHERE " + uvt.ToString().Replace(",",".") + " BETWEEN DESDE  AND HASTA ";
+                string select = "SELECT RETENCION FROM TARIFA_RETENCION_ART_384 WHERE " + uvt.ToString().Replace(",", ".") + " BETWEEN DESDE  AND HASTA ";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -162,7 +152,7 @@ public class ConfiguracionLiquidacion
     public static double obtenerPorcentajeRiesgoLaboral(int id_riesgo)  //ERROR E1001  
     {
 
-       
+
         ConexionBD conBD = new ConexionBD("bd_con");
         double resp = 0;
 
@@ -220,7 +210,7 @@ public class ConfiguracionLiquidacion
 
     public double CalcularICA(double total, double salud, double pension, double arl, double ica)
     {
-        if(ica == 0)
+        if (ica == 0)
             //return Math.Round((((total - salud - pension - arl) * ICA) / 1000),0);
             return Math.Round((((total - salud - pension) * ICA) / 1000), 0);
         else
@@ -231,7 +221,7 @@ public class ConfiguracionLiquidacion
     public double CalcularAFC(double total, double pension)
     {
 
-        return Math.Round(((total * AFC) - pension),0);
+        return Math.Round(((total * AFC) - pension), 0);
     }
 
 
@@ -246,10 +236,10 @@ public class ConfiguracionLiquidacion
             resp = (retefuenteUVT - 95) * 0.19 * VALOR_UVT;
         else if (retefuenteUVT <= 360)
             resp = (retefuenteUVT - 150) * 0.28 * VALOR_UVT + (10 * VALOR_UVT);
-        else if(retefuenteUVT > 360)
+        else if (retefuenteUVT > 360)
             resp = (retefuenteUVT - 360) * 0.33 * VALOR_UVT + (69 * VALOR_UVT);
 
-        return Math.Round(resp,0);
+        return Math.Round(resp, 0);
     }
 
 
@@ -301,14 +291,14 @@ public class ConfiguracionLiquidacion
             return this.SALARIO_MINIMO;
         else
             return result;
-        
+
     }
 
     public double CalcularIVA(double valor)
     {
 
         double aux = valor / (this.IVA + 1);
-        return valor - Math.Round(aux,0); 
+        return valor - Math.Round(aux, 0);
 
     }
 
@@ -326,14 +316,14 @@ public class ConfiguracionLiquidacion
 
     }
 
-    public double CalcularInteresPrepagada(double valor,int meses)
+    public double CalcularInteresPrepagada(double valor, int meses)
     {
 
         return valor / meses;
 
     }
 
-    public double CalcularPension(double valorIBC,bool combinadas,string documento,double valorFacturaNueva)
+    public double CalcularPension(double valorIBC, bool combinadas, string documento, double valorFacturaNueva)
     {
 
         double basePagoFSP = SALARIO_MINIMO * FACTOR_PAGO_FSP;
@@ -351,7 +341,7 @@ public class ConfiguracionLiquidacion
             return Cuenta.ValorPensionPorMes(documento) + valorPensionActual;
 
         }
-        
+
     }
 
     public double valorPension(double valorIBC)
@@ -371,11 +361,11 @@ public class ConfiguracionLiquidacion
     public double CalcularARL(double valor)
     {
 
-        return Math.Round( ((valor * this.ARL) / 100 ), 0);
+        return Math.Round(((valor * this.ARL) / 100), 0);
 
     }
 
-    public double CalcularARL(double valor,double porcentajeRiesgoLaboral)
+    public double CalcularARL(double valor, double porcentajeRiesgoLaboral)
     {
         if (porcentajeRiesgoLaboral == 0)
             return 0;
@@ -393,7 +383,7 @@ public class ConfiguracionLiquidacion
     public double CalcularValorDependientes(double valor)
     {
 
-        double res = Math.Round(   (valor * this.DEPENDIENTES), 0);
+        double res = Math.Round((valor * this.DEPENDIENTES), 0);
         double max = VALOR_UVT * MAX_UVT_DEPEND;
 
         if (res > max)
@@ -430,14 +420,14 @@ public class ConfiguracionLiquidacion
     }
 
 
-    public double CalcularValorRentaLiquidaCedular(double valorTotal, double vrSalud , double vrPension)
+    public double CalcularValorRentaLiquidaCedular(double valorTotal, double vrSalud, double vrPension)
     {
 
         return valorTotal - vrSalud - vrPension;
 
     }
 
-    public double CalcularValorRentaLiquidaCedular(double valorTotal, double vrSalud, double vrPension,double vrARL)
+    public double CalcularValorRentaLiquidaCedular(double valorTotal, double vrSalud, double vrPension, double vrARL)
     {
 
         return valorTotal - vrSalud - vrPension - vrARL;
@@ -451,7 +441,7 @@ public class ConfiguracionLiquidacion
 
     }
 
-    public double CalcularValorBaseBrutaGravable(double valorTotal, double valorIncrngo, double valorRentasExentas,double valorDeducciones)
+    public double CalcularValorBaseBrutaGravable(double valorTotal, double valorIncrngo, double valorRentasExentas, double valorDeducciones)
     {
 
         return valorTotal - valorIncrngo - valorRentasExentas - valorDeducciones;
@@ -498,10 +488,10 @@ public class ConfiguracionLiquidacion
 
     }*/
 
-    public double calcularBaseGravable(double valorRentasExentas, double valorDeducciones, double valorRentaExenta, double valorLimiteIngHon,double valorTotal,double valorIncrngo)
+    public double calcularBaseGravable(double valorRentasExentas, double valorDeducciones, double valorRentaExenta, double valorLimiteIngHon, double valorTotal, double valorIncrngo)
     {
         this.obtenerDatos();
-       
+
         double totalD = valorRentaExenta + valorDeducciones + valorRentasExentas;
         //double valorLimiteIngHonor = (valorTotal - valorIncrngo) * this.ValorLimiteIngresoHonorarios;
 
@@ -514,7 +504,7 @@ public class ConfiguracionLiquidacion
         return valorTotal - valorIncrngo - dedux;
 
     }
-   
+
 
     public double CalcularLimiteIngresoHonorarios(double valorRentaLCedular)
     {
@@ -641,7 +631,7 @@ public class ConfiguracionLiquidacion
         {
             return ICA;
         }
-        
+
     }
 
     public double ValorLimiteIngresoHonorarios
@@ -653,7 +643,7 @@ public class ConfiguracionLiquidacion
 
     }
 
- 
+
 
 
     public double ValorSalarioMinimo

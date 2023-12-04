@@ -1,19 +1,11 @@
 ﻿using System;
-using System.Data;
 using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
+using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
-using System.Data.SqlClient;
-using System.Data.Common;
 
 /// <summary>
 /// Descripción breve de PetroIMS
@@ -177,7 +169,7 @@ public class Utiles
     }
 
 
-    public static int actualizarItem(string tabla,string nombre_id,int id, string nombre_item,int id_estado)
+    public static int actualizarItem(string tabla, string nombre_id, int id, string nombre_item, int id_estado)
     {
         ConexionBD conBD = new ConexionBD("bd_con");
 
@@ -267,13 +259,13 @@ public class Utiles
 
     public static float validarNumeroToFloat(string numero)
     {
-        
+
         //string num_cor = Utiles.formatearCadenaANumero(numero);
 
         //546.840,22 si
         //546,840.22 no
-        
-        
+
+
 
         if (PetroIMS.IsNumeric(numero))
             return float.Parse(numero);
@@ -288,7 +280,7 @@ public class Utiles
         int posPunto = numero.IndexOf(".");
         string num_cor = numero;
 
-        
+
         //System.Globalization.CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator
         //System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator
 
@@ -298,7 +290,7 @@ public class Utiles
             if (posPunto == -1 && posComa > 0)
             {
 
-                num_cor = numero.Replace(",","");
+                num_cor = numero.Replace(",", "");
             }
             else if (posComa == -1 && posPunto > 0)
             {
@@ -458,7 +450,7 @@ public class Utiles
         }
     }
 
-    public static string obtenerNombreItem(string tabla, string id_tabla,string campo, string valor)
+    public static string obtenerNombreItem(string tabla, string id_tabla, string campo, string valor)
     {
 
         ConexionBD conBD = new ConexionBD("bd_con");

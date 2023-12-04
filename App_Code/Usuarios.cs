@@ -1,20 +1,13 @@
 using System;
-using System.Data;
-using System.Configuration;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using System.Xml;
-using System.Data.SqlClient;
-using System.Data.Common;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
+using System.Xml;
 
 
 
-   
+
 
 /// <summary>
 /// Manejo de usuarios del sistema
@@ -43,9 +36,9 @@ public class Usuarios
     private int superintendente = 0;
     private int VoBoPDT = 0;
     private int es_persona = 1;
-	private int actualizado = 0;
+    private int actualizado = 0;
 
-     public Usuarios()
+    public Usuarios()
     {
 
     }
@@ -69,7 +62,7 @@ public class Usuarios
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    
+
                     this.perfil = reader["perfil"].ToString();
                     this.area = PetroIMS.validarNumeroToInt(reader["area"].ToString());
                     this.id = PetroIMS.validarNumeroToInt(reader["id"].ToString());
@@ -85,10 +78,10 @@ public class Usuarios
                     this.aprobador_general = (reader["aprobador_general"] != DBNull.Value) ? Convert.ToInt32(reader["aprobador_general"]) : 0;
                     this.superintendente = (reader["superintendente"] != DBNull.Value) ? Convert.ToInt32(reader["superintendente"]) : 0;
                     this.correo = reader["correo"].ToString();
-					this.VoBoPDT = (reader["VoBoPDT"] != DBNull.Value) ? Convert.ToInt32(reader["VoBoPDT"]) : 0;
+                    this.VoBoPDT = (reader["VoBoPDT"] != DBNull.Value) ? Convert.ToInt32(reader["VoBoPDT"]) : 0;
                     this.es_persona = (reader["es_persona"] != DBNull.Value) ? Convert.ToInt32(reader["es_persona"]) : 0;
-					this.actualizado = (reader["actualizado"] != DBNull.Value) ? Convert.ToInt32(reader["actualizado"]) : 0;
-					this.clave = reader["clave"].ToString();
+                    this.actualizado = (reader["actualizado"] != DBNull.Value) ? Convert.ToInt32(reader["actualizado"]) : 0;
+                    this.clave = reader["clave"].ToString();
 
                 }
                 select = "SELECT Nivel FROM perfiles WHERE Perfil='" + perfil + "' AND Estado = 'A'";
@@ -132,9 +125,9 @@ public class Usuarios
                     this.estado = reader["ESTADO"].ToString();
                     this.alias = reader["USUARIO"].ToString();
                 }
-                
+
                 reader.Close();
-               
+
             }
         }
         catch (SqlException ex)
@@ -191,7 +184,7 @@ public class Usuarios
             {
                 conn.Open();
 
-                
+
 
                 SqlCommand command = new SqlCommand(sQuery, (SqlConnection)conn);
 
@@ -375,7 +368,7 @@ public class Usuarios
     public int actualizarClave(string clave)
     {
         string sQuery = "UPDATE usuarios SET Clave='" + clave + "' WHERE id_usuario = " + this.id_usuario.ToString();
-            
+
         ConexionBD conBD = new ConexionBD("petrominerales");
         int rows = 0;
         try
@@ -415,11 +408,11 @@ public class Usuarios
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    xml += "<Usuario usuario='" + reader[0].ToString() + 
+                    xml += "<Usuario usuario='" + reader[0].ToString() +
                         "' nombre='" + reader[1].ToString() +
                         "' perfil='" + reader[2].ToString() +
                         "' id='" + reader[4].ToString() +
-                        "' area='" + reader[5].ToString() + 
+                        "' area='" + reader[5].ToString() +
                         "' estado='" + reader[6].ToString() + "'/>";
                 }
                 xml += "</Root>";
@@ -512,21 +505,21 @@ public class Usuarios
         }
         catch (SqlException ex)
         {
-           
+
             xml += "<id='0' Nombre=''/>";
             documento.LoadXml(xml);
             return documento;
-        
+
         }
         return documento;
-    
+
     }
 
 
 
     public static List<Usuarios> UsuariosBackup(int usuario)
     {
-        
+
         ConexionBD conBD = new ConexionBD("petrominerales");
         List<Usuarios> li = new List<Usuarios>();
 
@@ -540,7 +533,7 @@ public class Usuarios
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
                 SqlDataReader reader = cmd.ExecuteReader();
-                
+
 
                 while (reader.Read())
                 {
@@ -551,9 +544,9 @@ public class Usuarios
                     li.Add(usr);
 
                 }
-               
+
                 reader.Close();
-                
+
             }
         }
         catch (SqlException ex)
@@ -564,7 +557,7 @@ public class Usuarios
         return li;
 
     }
-	
+
     public int adicionarBackup(int id_usuario_backup)
     {
         string sQuery = @"INSERT INTO usuario_backup (id_usuario,id_usuario_backup) 
@@ -583,7 +576,7 @@ public class Usuarios
 
                 command.Parameters.Add("@usuario", SqlDbType.Int).Value = this.id_usuario;
                 command.Parameters.Add("@usuario_backup", SqlDbType.Int).Value = id_usuario_backup;
-                
+
                 rows = command.ExecuteNonQuery();
                 conn.Close();
             }
@@ -632,7 +625,7 @@ public class Usuarios
     }
 
 
-	public int datosActualizados()
+    public int datosActualizados()
     {
         string sQuery = "UPDATE usuarios SET actualizado = 1 WHERE id_usuario = " + this.id_usuario.ToString();
 
@@ -658,9 +651,9 @@ public class Usuarios
     }
 
 
-    public int insertarBloqueContratista(int id_reporte,int id_bloque)
+    public int insertarBloqueContratista(int id_reporte, int id_bloque)
     {
-        string sQuery = "INSERT INTO datos_contratista_bloques (id_reporte,id_bloque) VALUES(" + id_reporte + "," + id_bloque +")";
+        string sQuery = "INSERT INTO datos_contratista_bloques (id_reporte,id_bloque) VALUES(" + id_reporte + "," + id_bloque + ")";
 
         ConexionBD conBD = new ConexionBD("petrominerales");
         int rows = 0;
@@ -680,9 +673,9 @@ public class Usuarios
         }
         return rows;
     }
-	
-	
-	public int insertarDatosContratista(string nombre_empresa,string nit,string nombre_gerente,string celular_gerente,string correo_gerente,string representante_hseq,string celular_rep_hseq,string correo_rep_hseq,string representante_hseq_2,string celular_rep_2_hseq,string correo_rep_2_hseq,int id_empresa)
+
+
+    public int insertarDatosContratista(string nombre_empresa, string nit, string nombre_gerente, string celular_gerente, string correo_gerente, string representante_hseq, string celular_rep_hseq, string correo_rep_hseq, string representante_hseq_2, string celular_rep_2_hseq, string correo_rep_2_hseq, int id_empresa)
     {
         ConexionBD conBD = new ConexionBD("petrominerales");
         int resp = 0;
@@ -779,7 +772,7 @@ public class Usuarios
             perfil = value;
         }
     }
-    
+
     public string Estado
     {
         get
@@ -964,8 +957,8 @@ public class Usuarios
             es_persona = value;
         }
     }
-	
-	public int Actualizadoa
+
+    public int Actualizadoa
     {
         get
         {

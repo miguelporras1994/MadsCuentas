@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Data;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-using System.Data.SqlClient;
 using System.Data.Common;
-using System.Collections;
+using System.Data.SqlClient;
 
 
 
@@ -25,24 +15,24 @@ public class LOG
     private string OPERACION = "";
     private string FUENTE = "";
     private string DESCRIPCION = "";
-    private DateTime FECHA = DateTime.Now; 
+    private DateTime FECHA = DateTime.Now;
     private string USUARIO = "";
-   
+
 
 
 
 
     public LOG(int id_registro)
     {
-       this.id_registro = id_registro;
+        this.id_registro = id_registro;
         obtenerDatos();
     }
 
     public LOG()
     {
-     
+
     }
-    
+
     public void obtenerDatos()  //ERROR E1001  
     {
 
@@ -68,7 +58,7 @@ public class LOG
                     FUENTE = reader["FUENTE"].ToString();
                     DESCRIPCION = reader["DESCRIPCION"].ToString();
                     USUARIO = reader["USUARIO"].ToString();
-                    
+
 
                 }
 
@@ -120,7 +110,7 @@ public class LOG
                 }
 
                 conn.Close();
-                
+
 
             }
         }
@@ -130,7 +120,7 @@ public class LOG
 
         }
 
-        
+
     }
 
     public DataTable consultarLOG_Cuenta()  //ERROR E1001  
@@ -170,10 +160,10 @@ public class LOG
     }
 
 
-    
-   
 
-   
+
+
+
     public string Operacion
     {
         get
@@ -213,7 +203,7 @@ public class LOG
 
     }
 
-    
+
 
     public DateTime Fecha
     {
@@ -228,7 +218,7 @@ public class LOG
 
     }
 
-   
+
 
     public string Usuario
     {
@@ -269,6 +259,6 @@ public class LOG
 
     }
 
-    
+
 
 }

@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Data;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-using System.Data.SqlClient;
 using System.Data.Common;
-using System.Collections;
+using System.Data.SqlClient;
 
 
 
@@ -20,7 +10,7 @@ using System.Collections;
 /// </summary>
 public class InteresVivienda
 {
-    
+
     private int ID_REGISTRO = 0;
     private double VALOR_TOTAL = 0;
     private double VALOR_MES = 0;
@@ -57,7 +47,7 @@ public class InteresVivienda
 
                     FECHA_INGRESADO = (reader["FECHA_INGRESADO"] != DBNull.Value) ? Convert.ToDateTime(reader["FECHA_INGRESADO"].ToString()) : DateTime.Now;
                     ID_REGISTRO = Utiles.validarNumeroToInt(reader["ID_REGISTRO"].ToString());
-                    VALOR_TOTAL = Utiles.validarNumeroToDouble( reader["VALOR_TOTAL"].ToString());
+                    VALOR_TOTAL = Utiles.validarNumeroToDouble(reader["VALOR_TOTAL"].ToString());
                     VALOR_MES = Utiles.validarNumeroToDouble(reader["VALOR_MES"].ToString());
 
                 }
@@ -74,7 +64,7 @@ public class InteresVivienda
 
     }
 
-   
+
 
     public int insertar()
     {

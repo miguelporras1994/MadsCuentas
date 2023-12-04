@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Data;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
-using System.Data.SqlClient;
 using System.Data.Common;
-using System.Collections;
+using System.Data.SqlClient;
 
 
 
@@ -25,7 +15,7 @@ public class Evento
     private string USUARIO = "";
     private string EVENTO = "";
     private DateTime FECHA = DateTime.Now;
-    
+
 
     public Evento()
     {
@@ -38,7 +28,7 @@ public class Evento
         this.ID_EVENTO = id_evento;
         obtenerDatos();
 
-        
+
     }
 
     private void obtenerDatos()  //ERROR E1001  
@@ -61,7 +51,7 @@ public class Evento
 
                     FECHA = (reader["FECHA"] != DBNull.Value) ? Convert.ToDateTime(reader["FECHA"].ToString()) : DateTime.Now;
                     ID_REGISTRO = Utiles.validarNumeroToInt(reader["ID_REGISTRO"].ToString());
-                    USUARIO  = reader["USUARIO"].ToString();
+                    USUARIO = reader["USUARIO"].ToString();
                     EVENTO = reader["EVENTO"].ToString();
 
                 }
@@ -113,9 +103,9 @@ public class Evento
     }
 
 
-    
 
-    
+
+
 
     public int insertar()
     {
@@ -141,8 +131,8 @@ public class Evento
                 SqlCommand cmd = new SqlCommand(sql, (SqlConnection)conn);
                 //cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add("@ID_REGISTRO", SqlDbType.VarChar).Value = ID_REGISTRO ;
-                cmd.Parameters.Add("@USUARIO", SqlDbType.VarChar ).Value = USUARIO;
+                cmd.Parameters.Add("@ID_REGISTRO", SqlDbType.VarChar).Value = ID_REGISTRO;
+                cmd.Parameters.Add("@USUARIO", SqlDbType.VarChar).Value = USUARIO;
                 cmd.Parameters.Add("@EVENTO", SqlDbType.VarChar).Value = EVENTO;
                 cmd.Parameters.Add("@FECHA", SqlDbType.DateTime).Value = FECHA;
 
@@ -161,7 +151,7 @@ public class Evento
 
     }
 
-    
+
 
     public int IDEvento
     {
@@ -228,6 +218,6 @@ public class Evento
 
     }
 
-    
+
 
 }

@@ -1,15 +1,5 @@
-﻿using System;
-using System.Data;
-using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using Microsoft.Reporting.WebForms;
-using System.Collections.Generic;
+﻿using Microsoft.Reporting.WebForms;
+using System;
 using System.Web.Configuration;
 
 public partial class RptDevoluciones : System.Web.UI.Page
@@ -28,15 +18,15 @@ public partial class RptDevoluciones : System.Web.UI.Page
             //paramLista.Add(new ReportParameter("P_ID_DETALLELQIMPU", "100", false));
             //paramLista.Add(new ReportParameter("ELABORO", "", false));
 
-            ReportViewer1.ProcessingMode = Microsoft.Reporting.WebForms.ProcessingMode.Remote;
-            ReportViewer1.Visible = true;
-            ReportViewer1.ShowParameterPrompts = true;
-            ReportViewer1.ServerReport.ReportServerUrl = new Uri(WebConfigurationManager.AppSettings["URLServidorReportes"]);
-            pathReporte = WebConfigurationManager.AppSettings["RutaReportes"];
-            ReportViewer1.ServerReport.ReportServerCredentials = new MyReportServerCredentials();
-            ReportViewer1.ServerReport.ReportPath = pathReporte + FNameReporte;
+            //ReportViewer1.ProcessingMode = Microsoft.Reporting.WebForms.ProcessingMode.Remote;
+            //ReportViewer1.Visible = true;
+            //ReportViewer1.ShowParameterPrompts = true;
+            //ReportViewer1.ServerReport.ReportServerUrl = new Uri(WebConfigurationManager.AppSettings["URLServidorReportes"]);
+            //pathReporte = WebConfigurationManager.AppSettings["RutaReportes"];
+            //ReportViewer1.ServerReport.ReportServerCredentials = new MyReportServerCredentials();
+            //ReportViewer1.ServerReport.ReportPath = pathReporte + FNameReporte;
             //ReportViewer1.ServerReport.SetParameters(paramLista);
-            ReportViewer1.ServerReport.Refresh();
+            //ReportViewer1.ServerReport.Refresh();
         }
     }
 
