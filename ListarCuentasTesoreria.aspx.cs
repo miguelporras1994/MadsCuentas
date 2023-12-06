@@ -70,10 +70,11 @@ public partial class ListarCuentasTesoreria : System.Web.UI.Page
 
                 if (DropDownListAsignado.Text != "0")
                 {
-                    select += " AND TESORERIA_ASIGNADO_A = '" + DropDownListAsignado.SelectedValue + "'";
+                    select += " AND TESORERIA_ASIGNADO_A = @DropDownListAsignado";
                 }
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@", DropDownListAsignado.SelectedValue);
                 SqlDataReader reader_sql = cmd.ExecuteReader();
 
 

@@ -70,9 +70,10 @@ public class CertificadoRetenciones
 
 
                 string select = @"SELECT * FROM [SOLICITUDES_CERTIFICADO_RET]
-                              WHERE ID_SOLICITUD = " + id_solicitud.ToString();
+                              WHERE ID_SOLICITUD = @id_solicitud";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@id_solicitud", id_solicitud);
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dtregistros);

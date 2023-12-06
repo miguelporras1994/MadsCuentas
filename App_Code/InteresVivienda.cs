@@ -38,9 +38,11 @@ public class InteresVivienda
             {
                 conn.Open();
 
-                string select = "SELECT * FROM INTERESES_VIVIENDA WHERE DOCUMENTO = '" + this.DOCUMENTO + "' AND A_O = " + this.A_O.ToString();
+                string select = "SELECT * FROM INTERESES_VIVIENDA WHERE DOCUMENTO = @Documento AND A_O = @Anio";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@Documento", this.DOCUMENTO);
+                cmd.Parameters.AddWithValue("@Anio", this.A_O);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {

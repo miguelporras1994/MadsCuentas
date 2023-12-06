@@ -422,9 +422,10 @@ public class WebService : System.Web.Services.WebService
             {
                 conn.Open();
 
-                string select = "SELECT * FROM contrato WHERE id_contrato = " + id_contrato;
+                string select = "SELECT * FROM contrato WHERE id_contrato = @id_contrato";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@id_contrato", id_contrato);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {

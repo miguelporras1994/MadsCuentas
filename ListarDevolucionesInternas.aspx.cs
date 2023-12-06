@@ -50,11 +50,12 @@ public partial class ListarDevolucionesInternas : System.Web.UI.Page
 
                 if (DropDownListGrupoDevolucion.Text != "0")
                 {
-                    select += @" AND CT.ID_GRUPO_DEVOLUCION = " + DropDownListGrupoDevolucion.Text;
+                    select += @" AND CT.ID_GRUPO_DEVOLUCION = @DropDownListGrupoDevolucion ";
 
                 }
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@DropDownListGrupoDevolucion", DropDownListGrupoDevolucion.Text);
                 SqlDataReader reader_sql = cmd.ExecuteReader();
 
 

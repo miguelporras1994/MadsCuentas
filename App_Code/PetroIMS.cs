@@ -91,10 +91,12 @@ public class PetroIMS
                 conn.Open();
 
                 string select2 = @"SELECT * FROM permisos_reportes 
-                                   WHERE id_usuario = " + id_usuario.ToString() + " AND reporte = '" + reporte + "'";
+                                   WHERE id_usuario = @id_usuario AND reporte = @reporte";
 
 
                 SqlCommand cmd2 = new SqlCommand(select2, (SqlConnection)conn);
+                cmd2.Parameters.AddWithValue("@id_usuario", id_usuario);
+                cmd2.Parameters.AddWithValue("@reporte", reporte);
 
                 object o = cmd2.ExecuteScalar();
                 if (o == null)

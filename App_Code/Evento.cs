@@ -42,9 +42,11 @@ public class Evento
             {
                 conn.Open();
 
-                string select = "SELECT * FROM LOG_EVENTOS WHERE ID_EVENTO = " + this.ID_EVENTO.ToString();
+                string select = "SELECT * FROM LOG_EVENTOS WHERE ID_EVENTO = @ID_EVENTO ";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@ID_EVENTO", this.ID_EVENTO);
+
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -81,9 +83,11 @@ public class Evento
             {
 
 
-                string select = "SELECT * FROM LOG_EVENTOS WHERE ID_EVENTO = " + this.ID_EVENTO;
+                string select = "SELECT * FROM LOG_EVENTOS WHERE ID_EVENTO =  @ID_EVENTO";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@ID_EVENTO", this.ID_EVENTO);
+
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dtregistros);

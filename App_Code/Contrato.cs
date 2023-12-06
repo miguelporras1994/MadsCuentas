@@ -68,9 +68,12 @@ public class Contrato
             {
                 conn.Open();
 
-                string select = "SELECT * FROM CONTRATOS WHERE ID_CONTRATO = " + this.id_registro.ToString();
+                string select = "SELECT * FROM CONTRATOS WHERE ID_CONTRATO =  @id_registro";
+
+
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@id_registro)", this.id_registro);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -168,9 +171,10 @@ public class Contrato
             {
                 conn.Open();
 
-                string select = "SELECT * FROM CONTRATOS WHERE ISNULL(NUMERO_PAGOS,0) <> ISNULL(PAGOS_REALIZADOS,0) AND USUARIO_REGISTRO = '" + this.UsuarioRegistro + "'";
+                string select = "SELECT * FROM CONTRATOS WHERE ISNULL(NUMERO_PAGOS,0) <> ISNULL(PAGOS_REALIZADOS,0) AND USUARIO_REGISTRO = @UsuarioRegistro ";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@UsuarioRegistro", UsuarioRegistro);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {

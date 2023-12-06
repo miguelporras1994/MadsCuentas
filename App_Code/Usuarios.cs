@@ -55,10 +55,10 @@ public class Usuarios
             {
                 conn.Open();
 
-                string select = "SELECT * FROM usuarios WHERE id_usuario = '" + usuario +
-                    "' AND Estado IN ('A','C','I')";
+                string select = "SELECT * FROM usuarios WHERE id_usuario = @usuario AND Estado IN ('A','C','I')";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@usuario", usuario);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -112,10 +112,10 @@ public class Usuarios
             {
                 conn.Open();
 
-                string select = "SELECT * FROM USUARIOS WHERE USUARIO='" + usuario +
-                    "' AND ESTADO IN ('A','C')";
+                string select = "SELECT * FROM USUARIOS WHERE USUARIO=@usuario  AND ESTADO IN ('A','C')";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@usuario", usuario);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -147,10 +147,11 @@ public class Usuarios
             {
                 conn.Open();
 
-                string select = "SELECT * FROM USUARIOS WHERE USUARIO='" + usuario + "' AND CLAVE = '" + clave +
-                    "' AND ESTADO IN ('A','C')";
+                string select = "SELECT * FROM USUARIOS WHERE USUARIO= @usuario AND CLAVE = @clave AND ESTADO IN ('A','C')";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@usuario", usuario);
+                cmd.Parameters.AddWithValue("@clave", clave);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -221,7 +222,7 @@ public class Usuarios
 
     public int crear(string Alias)
     {
-        string sQuery = "INSERT INTO usuarios (Usuario,Nombre,Perfil,Clave,Estado,Id,Area,id_tipo_usuario) VALUES('" + Alias + "','" + nombre + "','" + perfil + "','" + clave + "','" + estado + "'," + id + "," + area + ",4)";
+        string sQuery = "INSERT INTO usuarios (Usuario,Nombre,Perfil,Clave,Estado,Id,Area,id_tipo_usuario) VALUES(@Alias,@nombre,@perfil,@clave,@estado,@id,@area,4)";
         ConexionBD conBD = new ConexionBD("petrominerales");
         int rows = 0;
         try
@@ -230,6 +231,13 @@ public class Usuarios
             {
                 conn.Open();
                 SqlCommand command = new SqlCommand(sQuery, (SqlConnection)conn);
+                command.Parameters.AddWithValue("@Alias", Alias);
+                command.Parameters.AddWithValue("@nombre", nombre);
+                command.Parameters.AddWithValue("@perfil", perfil);
+                command.Parameters.AddWithValue("@clave", clave);
+                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@area", area);
+
                 rows = command.ExecuteNonQuery();
                 conn.Close();
             }
@@ -287,10 +295,10 @@ public class Usuarios
 
                 conn.Open();
 
-                string select2 = "SELECT * FROM usuarios WHERE Usuario = '" + usuario + "'";
+                string select2 = "SELECT * FROM usuarios WHERE Usuario = @usuario";
 
                 SqlCommand cmd2 = new SqlCommand(select2, (SqlConnection)conn);
-
+                cmd2.Parameters.AddWithValue("@usuario", usuario);
                 object o = cmd2.ExecuteScalar();
                 if (o == null)
                     resp = false;
@@ -449,6 +457,7 @@ public class Usuarios
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
                 SqlDataReader reader = cmd.ExecuteReader();
+
                 while (reader.Read())
                 {
                     xml += "<Usuario usuario='" + reader[0].ToString() +
@@ -604,10 +613,12 @@ public class Usuarios
 
                 conn.Open();
 
-                string select2 = "SELECT * FROM usuario_backup WHERE id_usuario_backup = " + usuario.ToString() + " AND id_usuario = " + this.id_usuario.ToString();
+                string select2 = "SELECT * FROM usuario_backup WHERE id_usuario_backup = @usuario AND id_usuario = @Id_usuario";
 
                 SqlCommand cmd2 = new SqlCommand(select2, (SqlConnection)conn);
 
+                cmd2.Parameters.AddWithValue("@usuario", usuario);
+                cmd2.Parameters.AddWithValue("@Id_usuario", this.id_usuario);
                 object o = cmd2.ExecuteScalar();
                 if (o == null)
                     resp = false;
@@ -627,7 +638,7 @@ public class Usuarios
 
     public int datosActualizados()
     {
-        string sQuery = "UPDATE usuarios SET actualizado = 1 WHERE id_usuario = " + this.id_usuario.ToString();
+        string sQuery = "UPDATE usuarios SET actualizado = 1 WHERE id_usuario = @id_usuario ";
 
         ConexionBD conBD = new ConexionBD("petrominerales");
         int rows = 0;
@@ -637,6 +648,8 @@ public class Usuarios
             {
                 conn.Open();
                 SqlCommand command = new SqlCommand(sQuery, (SqlConnection)conn);
+
+                command.Parameters.AddWithValue("@id_usuario", this.id_usuario);
                 rows = command.ExecuteNonQuery();
                 conn.Close();
             }
@@ -653,7 +666,7 @@ public class Usuarios
 
     public int insertarBloqueContratista(int id_reporte, int id_bloque)
     {
-        string sQuery = "INSERT INTO datos_contratista_bloques (id_reporte,id_bloque) VALUES(" + id_reporte + "," + id_bloque + ")";
+        string sQuery = "INSERT INTO datos_contratista_bloques (id_reporte,id_bloque) VALUES(@id_reporte,@id_bloque)";
 
         ConexionBD conBD = new ConexionBD("petrominerales");
         int rows = 0;
@@ -662,7 +675,10 @@ public class Usuarios
             using (DbConnection conn = conBD.GetDatabaseConnection())
             {
                 conn.Open();
+
                 SqlCommand command = new SqlCommand(sQuery, (SqlConnection)conn);
+                command.Parameters.AddWithValue("@id_reporte", id_reporte);
+                command.Parameters.AddWithValue("@id_bloque", id_bloque);
                 rows = command.ExecuteNonQuery();
                 conn.Close();
             }

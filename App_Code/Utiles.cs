@@ -78,10 +78,10 @@ public class Utiles
 
                 conn.Open();
 
-                string select2 = "SELECT * FROM " + tabla + " WHERE " + campo + " = '" + valor + "'";
+                string select2 = "SELECT * FROM " + tabla + " WHERE " + campo + " = @valor";
 
                 SqlCommand cmd2 = new SqlCommand(select2, (SqlConnection)conn);
-
+                cmd2.Parameters.AddWithValue("@valor", valor);
                 object o = cmd2.ExecuteScalar();
                 if (o == null)
                     resp = false;
@@ -113,10 +113,10 @@ public class Utiles
 
                 conn.Open();
 
-                string select2 = "SELECT * FROM " + tabla + " WHERE nombre='" + item + "'";
+                string select2 = "SELECT * FROM " + tabla + " WHERE nombre= @item";
 
                 SqlCommand cmd2 = new SqlCommand(select2, (SqlConnection)conn);
-
+                cmd2.Parameters.AddWithValue("@item", item);
                 object o = cmd2.ExecuteScalar();
                 if (o == null)
                     resp = false;
@@ -396,10 +396,12 @@ public class Utiles
                 conn.Open();
 
                 string select2 = @"SELECT * FROM permisos_reportes 
-                                   WHERE id_usuario = " + id_usuario.ToString() + " AND reporte = '" + reporte + "'";
+                                   WHERE id_usuario =  @id_usuario AND reporte = @reporte";
 
 
                 SqlCommand cmd2 = new SqlCommand(select2, (SqlConnection)conn);
+                cmd2.Parameters.AddWithValue("@id_usuario", id_usuario);
+                cmd2.Parameters.AddWithValue("@reporte", reporte);
 
                 object o = cmd2.ExecuteScalar();
                 if (o == null)
@@ -787,5 +789,7 @@ public class NumLetra
         }
         return getMiles(miles_millones) + " millones " + getMiles(miles);
     }
+
+
 
 }

@@ -96,9 +96,10 @@ public class Cuenta
             {
                 conn.Open();
 
-                string select = "SELECT * FROM CUENTA WHERE ID_REGISTRO = " + this.id_registro.ToString();
+                string select = "SELECT * FROM CUENTA WHERE ID_REGISTRO = @id_registro ";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@id_registro", this.id_registro);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -168,9 +169,12 @@ public class Cuenta
             {
                 conn.Open();
 
-                string select = "SELECT * FROM CUENTA WHERE CUENTA_POR_PAGAR = '" + this.CUENTA_POR_PAGAR.ToString() + "' AND ID_ENTIDAD = " + this.ID_ENTIDAD;
+                string select = "SELECT * FROM CUENTA WHERE CUENTA_POR_PAGAR = @CUENTA_POR_PAGAR  AND ID_ENTIDAD = @ID_ENTIDAD ";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@CUENTA_POR_PAGAR", this.CUENTA_POR_PAGAR);
+                cmd.Parameters.AddWithValue("@ID_ENTIDAD", this.ID_ENTIDAD);
+
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -651,9 +655,11 @@ public class Cuenta
 
                 conn.Open();
 
-                string select2 = "SELECT * FROM CUENTA WHERE CUENTA_POR_PAGAR = '" + this.CUENTA_POR_PAGAR + "' AND ID_ENTIDAD = " + this.ID_ENTIDAD.ToString();
+                string select2 = "SELECT * FROM CUENTA WHERE CUENTA_POR_PAGAR = @CUENTA_POR_PAGAR AND ID_ENTIDAD = @ID_ENTIDAD ";
 
                 SqlCommand cmd2 = new SqlCommand(select2, (SqlConnection)conn);
+                cmd2.Parameters.AddWithValue("@CUENTA_POR_PAGAR", this.CUENTA_POR_PAGAR);
+                cmd2.Parameters.AddWithValue("@ID_ENTIDAD", this.ID_ENTIDAD);
 
                 object o = cmd2.ExecuteScalar();
                 if (o == null)
@@ -2254,9 +2260,10 @@ this.id_registro + ", ser&aacute; abonada en el trascurso del d&iacute;a en su c
 
                 conn.Open();
 
-                string select2 = "SELECT * FROM CUENTA WHERE (REPORTE_ESTADO IS NULL OR REPORTE_ESTADO <> 'Pagada') AND ID_CTA_PRINCIPAL = " + id_cuenta_ppal.ToString();
+                string select2 = "SELECT * FROM CUENTA WHERE (REPORTE_ESTADO IS NULL OR REPORTE_ESTADO <> 'Pagada') AND ID_CTA_PRINCIPAL = @id_cuenta_ppal";
 
                 SqlCommand cmd2 = new SqlCommand(select2, (SqlConnection)conn);
+                cmd2.Parameters.AddWithValue("@id_cuenta_ppal", id_cuenta_ppal);
 
                 object o = cmd2.ExecuteScalar();
                 if (o == null)

@@ -39,13 +39,13 @@ public class Reporte
                 if (numero_doc != "")
                 {
 
-                    select += " AND NUM_DOCUMENTO = '" + numero_doc + "'";
+                    select += " AND NUM_DOCUMENTO = @reporte";
                 }
 
                 if (id_registro.Trim() != "")
                 {
 
-                    select += " AND ID_REGISTRO = " + id_registro;
+                    select += " AND ID_REGISTRO =  @id_registro ";
                 }
 
 
@@ -53,6 +53,8 @@ public class Reporte
                 select += " ORDER BY ID_REGISTRO DESC";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@reporte", numero_doc);
+                cmd.Parameters.AddWithValue("@id_registro", id_registro);
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dtregistros);
@@ -92,43 +94,43 @@ public class Reporte
                 if (numero_doc != "")
                 {
 
-                    select += " AND NUM_DOCUMENTO = '" + numero_doc + "'";
+                    select += " AND NUM_DOCUMENTO = @numero_doc";
                 }
 
                 if (orden_pago.Trim() != "")
                 {
 
-                    select += " AND REPORTE_ORDEN_PAGO = '" + orden_pago.Trim() + "'";
+                    select += " AND REPORTE_ORDEN_PAGO = @orden_pago";
                 }
 
                 if (cxp.Trim() != "")
                 {
 
-                    select += " AND CUENTA_POR_PAGAR = '" + cxp.Trim() + "'";
+                    select += " AND CUENTA_POR_PAGAR = @cxp";
                 }
 
                 if (nombre.Trim() != "")
                 {
 
-                    select += " AND NOMBRE_BENEFICIARIO LIKE '%" + nombre.Trim() + "%'";
+                    select += " AND NOMBRE_BENEFICIARIO LIKE '%@nombre%'";
                 }
 
                 if (correo.Trim() != "")
                 {
 
-                    select += " AND CORREO LIKE '%" + correo.Trim() + "%'";
+                    select += " AND CORREO LIKE '%@correo%'";
                 }
 
                 if (id_entidad != 0)
                 {
 
-                    select += " AND ID_ENTIDAD = " + id_entidad.ToString();
+                    select += " AND ID_ENTIDAD = @id_entidad ";
                 }
 
                 if (tipo_solicitud != 0)
                 {
 
-                    select += " AND ID_TIPO_DOCUMENTO = " + tipo_solicitud.ToString();
+                    select += " AND ID_TIPO_DOCUMENTO = @tipo_solicitud ";
 
 
                 }
@@ -136,17 +138,11 @@ public class Reporte
                 if (id_reporte != "")
                 {
 
-                    select += " AND ID_REGISTRO = " + id_reporte;
+                    select += " AND ID_REGISTRO = @id_reporte";
 
 
                 }
 
-                //if (ano > 0)
-                //{
-                //    select += " and year(FECHA_RADICADO) = " + ano.ToString();
-                //}
-                //else
-                //{
 
                 if (fecha_ini.ToString() != "" && fecha_fin.ToString() != "")
                 {
@@ -158,15 +154,19 @@ public class Reporte
 
 
                 }
-                //    else
-                //    {
-                //        //select += " and year(FECHA_RADICADO) = YEAR(GETDATE()) ";
-                //    }
-                //}
 
                 select += " ORDER BY ID_REGISTRO DESC";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@numero_doc", numero_doc);
+                cmd.Parameters.AddWithValue("@orden_pago", orden_pago.Trim());
+                cmd.Parameters.AddWithValue("@cxp", cxp.Trim());
+                cmd.Parameters.AddWithValue("@nombre", nombre.Trim());
+                cmd.Parameters.AddWithValue("@correo", correo.Trim());
+                cmd.Parameters.AddWithValue("@id_entidad", id_entidad);
+                cmd.Parameters.AddWithValue("@tipo_solicitud", tipo_solicitud);
+                cmd.Parameters.AddWithValue("@id_reporte", id_reporte);
+
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dtregistros);
@@ -204,53 +204,47 @@ public class Reporte
                 if (numero_doc != "")
                 {
 
-                    select += " AND NUM_DOCUMENTO = '" + numero_doc + "'";
+                    select += " AND NUM_DOCUMENTO = @nombre";
                 }
 
                 if (orden_pago.Trim() != "")
                 {
 
-                    select += " AND ID_REGISTRO = " + orden_pago.Trim() + "";
+                    select += " AND ID_REGISTRO =  @orden_pago";
                 }
 
                 if (cxp.Trim() != "")
                 {
 
-                    select += " AND CUENTA_POR_PAGAR = '" + cxp.Trim() + "'";
+                    select += " AND CUENTA_POR_PAGAR = @cxp ";
                 }
 
                 if (nombre.Trim() != "")
                 {
 
-                    select += " AND NOMBRE_BENEFICIARIO LIKE '%" + nombre.Trim() + "%'";
+                    select += " AND NOMBRE_BENEFICIARIO LIKE '%@nombre.Trim()%'";
                 }
 
                 if (correo.Trim() != "")
                 {
 
-                    select += " AND CORREO LIKE '%" + correo.Trim() + "%'";
+                    select += " AND CORREO LIKE '%@correo%'";
                 }
 
                 if (id_entidad != 0)
                 {
 
-                    select += " AND ID_ENTIDAD = " + id_entidad.ToString();
+                    select += " AND ID_ENTIDAD =@id_entidad ";
                 }
 
                 if (tipo_solicitud != 0)
                 {
 
-                    select += " AND ID_TIPO_DOCUMENTO = " + tipo_solicitud.ToString();
+                    select += " AND ID_TIPO_DOCUMENTO = @tipo_solicitud";
 
 
                 }
 
-                //if (ano > 0)
-                //{
-                //    select += " and year(FECHA_RADICADO) = " + ano.ToString();
-                //}
-                //else
-                //{
 
                 if (fecha_ini.ToString() != "" && fecha_fin.ToString() != "")
                 {
@@ -262,15 +256,20 @@ public class Reporte
 
 
                 }
-                //    else
-                //    {
-                //        //select += " and year(FECHA_RADICADO) = YEAR(GETDATE()) ";
-                //    }
-                //}
+
 
                 select += " ORDER BY ID_REGISTRO DESC";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+
+                cmd.Parameters.AddWithValue("@numero_doc", numero_doc);
+                cmd.Parameters.AddWithValue("@orden_pago", orden_pago.Trim());
+                cmd.Parameters.AddWithValue("@cxp", cxp.Trim());
+                cmd.Parameters.AddWithValue("@nombre", nombre.Trim());
+                cmd.Parameters.AddWithValue("@correo", correo.Trim());
+                cmd.Parameters.AddWithValue("@id_entidad", id_entidad);
+                cmd.Parameters.AddWithValue("@tipo_solicitud", tipo_solicitud);
+
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dtregistros);

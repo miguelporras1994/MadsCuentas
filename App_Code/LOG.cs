@@ -44,9 +44,10 @@ public class LOG
             {
                 conn.Open();
 
-                string select = "SELECT * FROM LOG_EVENTOS WHERE ID_LOG = " + this.id_registro.ToString();
+                string select = "SELECT * FROM LOG_EVENTOS WHERE ID_LOG = @id_registro ";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@id_registro", this.id_registro);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
