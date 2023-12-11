@@ -70,9 +70,10 @@ public class Liquidacion
             {
                 conn.Open();
 
-                string select = "SELECT * FROM LIQUIDACIONES WHERE ID_RADICACION = " + this.ID_RADICACION.ToString();
+                string select = "SELECT * FROM LIQUIDACIONES WHERE ID_RADICACION = @ID_RADICACION";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@ID_RADICACION", this.ID_RADICACION);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {

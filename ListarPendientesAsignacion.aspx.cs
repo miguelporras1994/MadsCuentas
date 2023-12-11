@@ -56,11 +56,12 @@ public partial class ListarPendientesAsignacion : System.Web.UI.Page
 
                 if (DropDownListEntidad.Text != "0")
                 {
-                    select += " WHERE ID_ENTIDAD = " + DropDownListEntidad.Text;
+                    select += " WHERE ID_ENTIDAD = @DropDownListEntidad ";
                 }
 
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@DropDownListEntidad", DropDownListEntidad.Text);
                 SqlDataReader reader_sql = cmd.ExecuteReader();
 
 

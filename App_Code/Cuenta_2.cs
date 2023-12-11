@@ -86,9 +86,10 @@ public class Cuenta_2
             {
                 conn.Open();
 
-                string select = "SELECT * FROM CUENTA_2 WHERE ID_REGISTRO = " + this.id_registro.ToString();
+                string select = "SELECT * FROM CUENTA_2 WHERE ID_REGISTRO = @id_registro";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@id_registro", this.id_registro);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -149,9 +150,10 @@ public class Cuenta_2
             {
                 conn.Open();
 
-                string select = "SELECT * FROM CUENTA_2 WHERE CUENTA_POR_PAGAR = '" + this.CUENTA_POR_PAGAR.ToString() + "'";
+                string select = "SELECT * FROM CUENTA_2 WHERE CUENTA_POR_PAGAR = @CUENTA_POR_PAGAR";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@CUENTA_POR_PAGAR", this.CUENTA_POR_PAGAR);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -422,9 +424,10 @@ public class Cuenta_2
 
                 conn.Open();
 
-                string select2 = "SELECT * FROM CUENTA WHERE CUENTA_POR_PAGAR = '" + this.CUENTA_POR_PAGAR + "'";
+                string select2 = "SELECT * FROM CUENTA WHERE CUENTA_POR_PAGAR = @CUENTA_POR_PAGAR";
 
                 SqlCommand cmd2 = new SqlCommand(select2, (SqlConnection)conn);
+                cmd2.Parameters.AddWithValue("@CUENTA_POR_PAGAR", this.CUENTA_POR_PAGAR);
 
                 object o = cmd2.ExecuteScalar();
                 if (o == null)

@@ -162,13 +162,14 @@ public class ConfiguracionLiquidacion
             {
                 conn.Open();
 
-                string select = "SELECT PORCENTAJE FROM RIESGOS_LABORALES WHERE ID_RIESGO = " + id_riesgo.ToString();
+                string select = "SELECT PORCENTAJE FROM RIESGOS_LABORALES WHERE ID_RIESGO = @id_riesgo";
 
                 // Retornar el riesgo laboral por defecto
                 if (id_riesgo == 0)
                     select = "SELECT PORCENTAJE FROM RIESGOS_LABORALES WHERE ID_RIESGO = 1";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@id_riesgo", id_riesgo);
                 //SqlDataReader reader = cmd.ExecuteReader();
                 object o = cmd.ExecuteScalar();
                 if (o == null)
@@ -535,17 +536,6 @@ public class ConfiguracionLiquidacion
         {
             using (DbConnection conn = conBD.GetDatabaseConnection())
             {
-
-
-                //string select = "SELECT * FROM LOG_EVENTOS WHERE ID_EVENTO = " + this.ID_EVENTO;
-
-                //SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
-                //conn.Open();
-                //SqlDataAdapter da = new SqlDataAdapter(cmd);
-                //da.Fill(dtregistros);
-
-                //conn.Close();
-                //da.Dispose();
 
             }
         }

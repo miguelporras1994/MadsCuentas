@@ -49,7 +49,7 @@ public partial class ReasignarCuentas : System.Web.UI.Page
 
                 if (DropDownListAsignado.Text != "0")
                 {
-                    select += " AND ASIGNADO_A = '" + DropDownListAsignado.SelectedValue + "'";
+                    select += " AND ASIGNADO_A = @DropDownListAsignado";
                 }
 
                 if (DropDownListEntidad.Text != "0")
@@ -58,6 +58,8 @@ public partial class ReasignarCuentas : System.Web.UI.Page
                 }
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@DropDownListAsignado", DropDownListAsignado.SelectedValue);
+                cmd.Parameters.AddWithValue("@DropDownListAsignado", DropDownListAsignado.SelectedValue);
                 SqlDataReader reader_sql = cmd.ExecuteReader();
 
 

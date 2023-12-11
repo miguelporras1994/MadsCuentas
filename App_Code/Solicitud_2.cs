@@ -79,9 +79,10 @@ public class Solicitud_2
             {
                 conn.Open();
 
-                string select = "SELECT * FROM SOLICITUD_2 WHERE ID_ADQUISICION = " + this.id_registro.ToString();
+                string select = "SELECT * FROM SOLICITUD_2 WHERE ID_ADQUISICION = @id_registro";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@id_registro", this.id_registro);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -145,9 +146,10 @@ public class Solicitud_2
             {
                 conn.Open();
 
-                string select = "SELECT * FROM SOLICITUD_2 WHERE NUMERO_REGISTRO = '" + this.NUMERO_REGISTRO + "'";
+                string select = "SELECT * FROM SOLICITUD_2 WHERE NUMERO_REGISTRO = @NUMERO_REGISTRO";
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
+                cmd.Parameters.AddWithValue("@NUMERO_REGISTRO", this.NUMERO_REGISTRO);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {

@@ -1,23 +1,12 @@
-using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Web;
-using System.Web.SessionState;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.HtmlControls;
-using System.Xml;
-using System.Threading;
-using System.Globalization;
-using System.Configuration;
-using System.Web.Security;
 using FormsAuth;
+using System;
+using System.Configuration;
+using System.Web;
+using System.Web.Security;
 
-	/// <summary>
-	/// Summary description for WebFormLogOn.
-	/// </summary>
+/// <summary>
+/// Summary description for WebFormLogOn.
+/// </summary>
 public partial class WebFrmSeg : System.Web.UI.Page
 {
 
@@ -38,7 +27,7 @@ public partial class WebFrmSeg : System.Web.UI.Page
 
     protected void Login_Click(object sender, EventArgs e)
     {
-        String adPath = "LDAP://ServerMiguel.practica.test"; //Fully-qualified Domain Name
+        String adPath = ConfigurationSettings.AppSettings["dominioDA"]; ; //Fully-qualified Domain Name
         LdapAuthentication adAuth = new LdapAuthentication(adPath);
         Usuarios user;
         try
@@ -73,13 +62,13 @@ public partial class WebFrmSeg : System.Web.UI.Page
 
             }
 
-            
+
         }
         catch (Exception ex)
         {
 
             Response.Write("<script>alert('Por favor verifique su usuario y contraseña o contacte al administrador.');</script>");
-           
+
         }
     }
 

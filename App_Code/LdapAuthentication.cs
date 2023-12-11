@@ -16,7 +16,7 @@ namespace FormsAuth
 
         public bool IsAuthenticated(String domain, String username, String pwd)
         {
-            domain = "practica";
+     
             String domainAndUsername = domain + @"\" + username;
             DirectoryEntry entry = new DirectoryEntry(_path, domainAndUsername, pwd);
 
