@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://www.woodgroup.com.co/servicioseconexion/admin/adminfach.asmx?wsdl" docRef="http://www.woodgroup.com.co/servicioseconexion/admin/adminfach.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://www.woodgroup.com.co/servicioseconexion/admin/adminfach.asmx" xmlns:q1="CBM" binding="q1:AdminFachSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://www.woodgroup.com.co/servicioseconexion/admin/adminfach.asmx" xmlns:q2="CBM" binding="q2:AdminFachSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

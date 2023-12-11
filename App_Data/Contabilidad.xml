@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<MenuItem Text="Start" Value="H" Enabled="false" Url="">
+  
+
+  <MenuItem Text="Contabilidad" Value="0"  Url="#">
+    <MenuItem Text="Cargar Archivo" Value="0"  Url="AsignarCuentaContabilidad.aspx">
+    </MenuItem>
+    
+    <MenuItem Text="Cuentas Asignadas" Value="0"  Url="ListarCuentasContabilidad.aspx">
+    </MenuItem>
+  </MenuItem>
+
+
+
+  <MenuItem Text="Devoluciones" Value="0"  Url="ListarDevolucionesInternas.aspx">
+    <MenuItem Text="Registrar" Value="0"  Url="RegistrarDevolucion.aspx">
+    </MenuItem>
+    <MenuItem Text="Resolver" Value="0"  Url="ListarDevolucionesInternas.aspx">
+    </MenuItem>
+    <MenuItem Text="Devoluciones Contratista" Value="0"  Url="ListarDevolucionesContratistas.aspx">
+    </MenuItem>
+  </MenuItem>
+
+  <MenuItem Text="Reporte" Value="0"  Url="ReporteGeneral.aspx">
+  </MenuItem>
+
+
+  <MenuItem Text="Salir" Value="0"  Url="Logout.aspx">
+  </MenuItem>
+</MenuItem>

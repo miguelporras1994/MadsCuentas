@@ -1,0 +1,481 @@
+﻿using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+using System.Data;
+using System.Data.OleDb;
+using System.Globalization;
+using System.IO;
+using Microsoft.Office.Interop.Excel;
+using System.Drawing;
+
+
+public partial class CargarCuentasContabilidad : System.Web.UI.Page
+{
+    private int id_bodega = 0;
+    private int id_proyecto = 0;
+    private int id_usuario = 0;
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        /*
+        if (Session["loginAdmin"] == null)
+        {
+            Response.Redirect("LoginAdmin.aspx");
+            LiteralMenu.Visible = false;
+
+        }
+        else
+        {
+            LiteralMenu.Text = Session["menu"].ToString();
+            LiteralMenu.Visible = true;
+            id_usuario = Utiles.validarNumeroToInt(Session["id_usuario"].ToString());
+        }*/
+
+       
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+
+
+       
+
+        Literal2.Text = "";
+        GridView1.Visible = true;
+
+        try
+        {
+            //OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\web_sites\Empleados.xlsx;Extended Properties=Excel 12.0 Xml;HDR=NO;IMEX=1");
+
+            //OleDbDataAdapter da = new OleDbDataAdapter("select * from MyObject", con);
+            System.Data.DataTable dt = new System.Data.DataTable();
+            //dt = GetDataTableFromCsv("C:\\web_sites\\Empleados.csv",false);
+            // dt = Import("C:\\web_sites\\Empleados.xlsx");
+            // GridView1.DataSource = dt;
+            // GridView1.DataBind();
+
+            HttpPostedFile uploadedFile = FileUpload1.PostedFile;
+
+            if (uploadedFile != null && uploadedFile.ContentLength > 0)
+            {
+
+                //string nombreArchivo = uploadedFile.FileName;
+
+                string fileName = null;
+                int lastPos = uploadedFile.FileName.LastIndexOf('\\');
+
+                fileName = DateTime.Now.Second.ToString() + "_" + uploadedFile.FileName.Substring(++lastPos);
+                //string nombreArchivo =  fileName;
+
+                uploadedFile.SaveAs(MapPath("carga_info" + "/" + fileName));
+
+                string HDR = "NO";
+
+               
+
+                // https://www.microsoft.com/en-us/download/confirmation.aspx?id=23734
+                string myConnection = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + MapPath("carga_info" + "/" + fileName) + ";Extended Properties=\"Excel 12.0 Xml;HDR=" + HDR + "\"";
+
+                //string myConnection = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + MapPath("carga_info" + "/" + fileName) + ";Extended Properties= \"Excel 8.0;HDR=Yes;IMEX=1\";";
+
+                OleDbConnection conn = new OleDbConnection(myConnection);
+               
+
+                conn.Open();
+                
+
+                System.Data.DataTable dtExcelSchema;
+
+                dtExcelSchema = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+
+                string sheetName = dtExcelSchema.Rows[0]["TABLE_NAME"].ToString();
+
+                sheetName = "[" + sheetName.Replace("'", "") + "]";
+
+                string strSQL = "";
+
+                if (DropDownListEntidad.Text == "1")
+                {
+                    strSQL = @"SELECT F1 AS NUMERO_DOCUMENTO,F2 AS FECHA_REGISTRO,F3 AS FECHA_CREACION,F8 AS DEPENDENCIA,F29 AS CDP,
+                                         F31 AS COMPROMISO,F32 AS CUENTA_POR_PAGAR,F34 AS OBLIGACION,F9 AS IDENTIFICACION,
+                                F10 AS RAZON_SOCIAL,F5 AS VALOR_ACTUAL,F6 AS VALOR_DEDUCCIONES  FROM " + sheetName + "";
+                }
+                else
+                {
+                    strSQL = @"SELECT F1 AS NUMERO_DOCUMENTO,F2 AS FECHA_REGISTRO,F3 AS FECHA_CREACION,F8 AS DEPENDENCIA,F29 AS CDP,
+                                         F31 AS COMPROMISO,F32 AS CUENTA_POR_PAGAR,F33 AS OBLIGACION,F9 AS IDENTIFICACION,
+                                F10 AS RAZON_SOCIAL,F5 AS VALOR_ACTUAL,F6 AS VALOR_DEDUCCIONES  FROM " + sheetName + "";
+                }
+                OleDbCommand cmd = new OleDbCommand(strSQL, conn);
+
+                
+                /*
+                 *  cmd.Parameters.Add("@REPORTE_FECHA_CREACION", SqlDbType.DateTime).Value = REPORTE_FECHA_CREACION;
+                cmd.Parameters.Add("@REPORTE_DEPENDENCIA", SqlDbType.VarChar).Value = REPORTE_DEPENDENCIA;
+                cmd.Parameters.Add("@REPORTE_CDP", SqlDbType.VarChar).Value = REPORTE_CDP;
+                cmd.Parameters.Add("@REPORTE_COMPROMISO", SqlDbType.VarChar).Value = REPORTE_COMPROMISO;
+                cmd.Parameters.Add("@REPORTE_OBLIGACION", SqlDbType.VarChar).Value = REPORTE_OBLIGACION;
+                
+                cmd.Parameters.Add("@ID_REGISTRO", SqlDbType.Int).Value = id_registro;
+                 * */
+
+
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+
+                }
+
+                
+                conn.Close();
+
+
+                System.Data.DataTable dtregistros = new System.Data.DataTable();
+
+                DataSet dataset = new DataSet();
+                OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
+                adapter.Fill(dataset);
+
+                System.Data.DataTable dtable = new System.Data.DataTable();
+                adapter.Fill(dtregistros);
+
+                GridView1.DataSource = dataset;
+                GridView1.DataBind();
+               
+                //if (CheckBox1.Checked == false)
+                    Label1.Text = "Total registros: " + GridView1.Rows.Count;
+               // else
+                //    Label1.Text = "Total registros: " + (GridView1.Rows.Count - 1);
+            }
+
+            Button1.Enabled = false;
+            ButtonGuardar.Enabled = true;
+
+            //da.Fill(dt);
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message.Normalize());
+        }
+    }
+
+
+    protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        int columna_cuenta_por_pagar = 6;
+        int columna_obligacion = 7;
+        int columna_nivel_prob = 15;
+        int columna_identificacion = 8;
+
+        bool sin_cruce = false;
+
+        System.Web.UI.WebControls.Image imageCruce = new System.Web.UI.WebControls.Image();
+        System.Web.UI.WebControls.CheckBox chkAprobar = new System.Web.UI.WebControls.CheckBox();
+
+        try
+        {
+
+            if( e.Row.RowType == DataControlRowType.DataRow )
+            {
+
+                //Dim ddlValores As DropDownList = DirectCast(e.Row.FindControl("DropDownListValores"), DropDownList)
+                chkAprobar = (System.Web.UI.WebControls.CheckBox)(e.Row.FindControl("CheckBoxNoPresupuestal"));
+                imageCruce = (System.Web.UI.WebControls.Image)(e.Row.FindControl("ImageCruce"));
+            }
+        }
+        catch { }
+
+
+
+        try
+        {
+
+
+            if (e.Row.Cells[columna_cuenta_por_pagar].Text != "" && e.Row.Cells[columna_cuenta_por_pagar].Text != "&nbsp;")
+            {
+
+                string cuenta_por_pagar = e.Row.Cells[columna_cuenta_por_pagar].Text;
+                string identificacion = e.Row.Cells[columna_identificacion].Text;
+
+                Cuenta cuenta = new Cuenta();
+                cuenta.CuentaPorPagar = cuenta_por_pagar;
+                cuenta.IDEntidad = Utiles.validarNumeroToInt(DropDownListEntidad.Text);
+                cuenta.obtenerDatosPorCuentaPorPagar();
+                if (cuenta.IDRegistro > 0)
+                {
+                    //e.Row.Cells[columna_obligacion].Text = "Encontrado";
+                    imageCruce.ImageUrl = "images/semV.jpg";
+                    chkAprobar.Visible = false;
+                   
+                }
+                else
+                {
+                    //e.Row.Cells[columna_obligacion].Text = "No Encontrado";
+                    imageCruce.ImageUrl = "images/semR.jpg";
+                    if (identificacion == "900948953")
+                    {
+                        chkAprobar.Checked = true;
+                    }
+                    sin_cruce = true;
+                }
+                //e.Row.Cells[columna_obligacion].BackColor = Color.Green;
+
+            }
+        }
+        catch { }
+
+        if (sin_cruce)
+            LiteralMensaje.Text = "<div class='warning'>Se encontraron cuentas que no cruazaron, por favor seleccione si se trata de una cuenta 'No presupuestal' o de lo contrario quedar&aacute; en estado de devoluci&oacute;n al grupo de contabilidad.</div>";
+        else
+            LiteralMensaje.Text = "";
+    }
+
+
+    protected void ButtonGuardar_Click(object sender, EventArgs e)
+    {
+
+        
+
+        try
+        {
+            Usuarios usuario = (Usuarios)Session["usuario"];
+           
+
+           
+
+
+
+            foreach (GridViewRow row in GridView1.Rows)
+            {
+                System.Web.UI.WebControls.CheckBox chkAprobar = new System.Web.UI.WebControls.CheckBox();
+
+                try
+                {
+
+                    if (row.RowType == DataControlRowType.DataRow)
+                    {
+
+                        //Dim ddlValores As DropDownList = DirectCast(e.Row.FindControl("DropDownListValores"), DropDownList)
+                        chkAprobar = (System.Web.UI.WebControls.CheckBox)(row.FindControl("CheckBoxNoPresupuestal"));
+                        
+                    }
+                }
+                catch { }
+
+                try
+                {
+                    
+
+                    //if (chkAprobar.Visible == true)
+                    //{
+
+                    //    Cuenta_2 cuenta = new Cuenta_2();
+
+                    //    cuenta.ReporteFechaCreacion = Convert.ToDateTime(GridView1.Rows[row.RowIndex].Cells[1].Text);
+                    //    cuenta.ReporteCDP = GridView1.Rows[row.RowIndex].Cells[3].Text.Replace("&nbsp;","");
+                    //    cuenta.ReporteCompromiso = GridView1.Rows[row.RowIndex].Cells[4].Text.Replace("&nbsp;", "");
+                    //    cuenta.ReporteObligacion = GridView1.Rows[row.RowIndex].Cells[5].Text.Replace("&nbsp;", "");
+                    //    cuenta.CuentaPorPagar = GridView1.Rows[row.RowIndex].Cells[6].Text.Replace("&nbsp;", "");
+                    //    cuenta.NumeroDocumentoContabilidad = GridView1.Rows[row.RowIndex].Cells[7].Text.Replace("&nbsp;", "");
+
+
+                    //    try
+                    //    {
+                    //        cuenta.FechaRegistroContabilidad = Convert.ToDateTime(GridView1.Rows[row.RowIndex].Cells[10].Text);
+                    //    }
+                    //    catch { }
+
+                    //    try
+                    //    {
+                    //        cuenta.FechaCreacionContabilidad = Convert.ToDateTime(GridView1.Rows[row.RowIndex].Cells[11].Text);
+                    //    }
+                    //    catch { }
+
+                    //    //Insertar si la cuenta no existe
+                    //    if (!cuenta.cuentaPorPagarExiste())
+                    //    {
+
+                    //        //try
+                    //        //{
+                    //        //    cuenta.ValorFactura = Utiles.validarNumeroToFloat(GridView1.Rows[row.RowIndex].Cells[9].Text.Replace("$ ", ""));
+                    //        //}
+                    //        //catch { }
+
+                    //        ////Si la cuenta no se encontro en el cruce se inserta ya sea como devolucion o como no presupuestal
+                    //        //cuenta.insertar();
+
+
+                    //        //if (chkAprobar.Checked == true)
+                    //        //{
+                    //        //    cuenta.noPresupuestal();
+                               
+                    //        //}
+                    //        //else
+                    //        //{
+                    //        //    cuenta.devolverInterna(2);
+                    //        //    cuenta.sinCruce();
+                                
+                    //        //}
+
+                    //        //cuenta.recibidoContabilidad();
+                    //    }
+                    //}
+                    //else
+                    if (chkAprobar.Visible == false)
+                    {
+                        Cuenta cuenta = new Cuenta();
+                        cuenta.ReporteFechaCreacion = Convert.ToDateTime(GridView1.Rows[row.RowIndex].Cells[1].Text);
+                        cuenta.ReporteCDP = GridView1.Rows[row.RowIndex].Cells[3].Text.Replace("&nbsp;", "");
+                        cuenta.ReporteCompromiso = GridView1.Rows[row.RowIndex].Cells[4].Text.Replace("&nbsp;", "");
+                        cuenta.ReporteObligacion = GridView1.Rows[row.RowIndex].Cells[5].Text.Replace("&nbsp;", "");
+                        cuenta.CuentaPorPagar = GridView1.Rows[row.RowIndex].Cells[6].Text.Replace("&nbsp;", "");
+                        cuenta.NumeroDocumentoContabilidad = GridView1.Rows[row.RowIndex].Cells[7].Text.Replace("&nbsp;", "");
+
+                        if (cuenta.CuentaPorPagar.Trim().Replace("&nbsp;", "") != "")
+                        {
+
+                            try
+                            {
+                                cuenta.FechaRegistroContabilidad = Convert.ToDateTime(GridView1.Rows[row.RowIndex].Cells[10].Text);
+                            }
+                            catch { }
+
+                            try
+                            {
+                                cuenta.FechaCreacionContabilidad = Convert.ToDateTime(GridView1.Rows[row.RowIndex].Cells[11].Text);
+                            }
+                            catch { }
+                            cuenta.CuentaPorPagar = GridView1.Rows[row.RowIndex].Cells[6].Text.Replace("&nbsp;", "");
+                            cuenta.IDEntidad = Utiles.validarNumeroToInt(DropDownListEntidad.Text);
+                            cuenta.obtenerDatosPorCuentaPorPagar();
+                            cuenta.insertarLOG(usuario.Alias, "", "Recibido Contabilidad", "Registro");
+                            cuenta.recibidoContabilidad();
+                        }   
+                    }
+
+                }
+                catch { }
+
+
+            }
+
+           
+
+
+        }
+        catch (Exception ex) {
+
+            string codigo_js_error = "alert('Se genero un error:" + ex.Message.Normalize() + "');window.location.href='CargarCuentasContabilidad.aspx';";
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "script", "<script>" + codigo_js_error + "</script>");
+
+        }
+
+        string codigo_js = "alert('Proceso terminado');window.location.href='CargarCuentasContabilidad.aspx';";
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "script", "<script>" + codigo_js + "</script>");
+
+    }
+
+
+    private string[] validarDatos(string cuenta_pagar)
+    {
+
+        string[] resp = new string [7];
+
+        foreach (GridViewRow row in GridView1.Rows)
+        {
+            
+            string cuenta = row.Cells[5].Text;
+            
+            if (cuenta.Trim() == cuenta_pagar.Trim())
+            {
+
+                resp[0] = row.Cells[0].Text;
+                resp[1] = row.Cells[1].Text;
+                resp[2] = row.Cells[2].Text;
+                resp[3] = row.Cells[3].Text;
+                resp[4] = row.Cells[4].Text;
+                resp[5] = row.Cells[5].Text;
+                resp[6] = row.Cells[6].Text;
+            }
+                
+            
+        }
+
+        return resp;
+    }
+
+
+    private string validarCuentaObligacion(string cuenta_pagar)
+    {
+
+        
+        foreach (GridViewRow row in GridView1.Rows)
+        {
+            string estado = row.Cells[2].Text;
+            string cuenta = row.Cells[6].Text;
+            string obligacion = row.Cells[7].Text;
+            if (cuenta.Trim() == cuenta_pagar.Trim())
+                return obligacion;
+        }
+
+        return "";
+    }
+
+    private string validarCuentaEstado(string cuenta_pagar)
+    {
+
+
+        foreach (GridViewRow row in GridView1.Rows)
+        {
+            string estado = row.Cells[2].Text;
+            string cuenta = row.Cells[6].Text;
+            string obligacion = row.Cells[7].Text;
+            if (cuenta.Trim() == cuenta_pagar.Trim())
+                return estado;
+        }
+
+        return "";
+    }
+
+    private string validarCuentaValorBruto(string cuenta_pagar)
+    {
+
+
+        foreach (GridViewRow row in GridView1.Rows)
+        {
+            string valor_bruto = row.Cells[3].Text;
+            string cuenta = row.Cells[6].Text;
+            string obligacion = row.Cells[7].Text;
+            if (cuenta.Trim() == cuenta_pagar.Trim())
+                return valor_bruto;
+        }
+
+        return "0";
+    }
+
+    private string validarCuentaValorNeto(string cuenta_pagar)
+    {
+
+
+        foreach (GridViewRow row in GridView1.Rows)
+        {
+            string valor_neto = row.Cells[4].Text;
+            string cuenta = row.Cells[6].Text;
+            string obligacion = row.Cells[7].Text;
+            if (cuenta.Trim() == cuenta_pagar.Trim())
+                return valor_neto;
+        }
+
+        return "0";
+    }
+
+        
+}

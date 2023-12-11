@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<MenuItem Text="Start" Value="H" Enabled="false" Url="">
+
+
+  <MenuItem Text="Reporte" Value="0"  Url="ReporteGeneral.aspx">
+  </MenuItem>
+
+
+  <MenuItem Text="Salir" Value="0"  Url="Logout.aspx">
+  </MenuItem>
+</MenuItem>

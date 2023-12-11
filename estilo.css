@@ -1,0 +1,420 @@
+
+	/* CSS Document */
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+body, table, td, p, span, a, h1, h2, h3, h4 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666666;
+}
+
+.iztitulo1 {
+	width: 10px;
+	background-image:url(images/iztitulo1.png);
+}
+
+.izqsuptitulo {
+	width: 20px;
+	background-image:url(images/izqsuptitulo.png);
+}
+
+.izqinftitulo {
+	width: 20px;
+	background-image:url(images/izqinftitulo.png);
+}
+
+.titulo {
+	background-color:#990000;
+	font-weight:bold;
+	font-family:Verdana, Geneva, sans-serif;
+	color:#FFF;
+	height:30px;
+	vertical-align: middle;
+	text-align:center;
+}
+
+.titulo1 {
+	background-color:green;
+	font-weight:bold;
+    font-size: 14px;
+	font-family:Verdana, Geneva, sans-serif;
+	color:#FFF;
+	width:910px;
+	height:20px;
+	vertical-align: middle;
+	text-align:center;
+}
+
+.titulo2 {
+	background-color:#f37622;
+	font-weight:bold;
+	font-family:Verdana, Geneva, sans-serif;
+	color:#FFF;
+	width:241px;
+	height:20px;
+	vertical-align: middle;
+	text-align:center;
+}
+
+.titulo3 {
+	background-color:#f37622;
+	font-weight:bold;
+	font-family:Verdana, Geneva, sans-serif;
+	color:#FFF;
+	width:460px;
+	height:20px;
+	vertical-align: middle;
+	text-align:center;
+}
+
+.dersuptitulo {
+	width: 20px;
+	background-image:url(images/dersuptitulo.png);
+}
+
+.derinftitulo {
+	width: 20px;
+	background-image:url(images/derinftitulo.png);
+}
+
+.dertitulo1 {
+	width: 9px;
+	background-image:url(images/dertitulo1.png);
+}
+
+.dertitulo2 {
+	width: 10px;
+	background-image:url(images/dertitulo1.png);
+}
+
+.tabla1 {
+	border-style: none;
+	border-color: inherit;
+	border-width: medium;
+width:723px;
+}
+
+.tabla2 {
+	border:none;
+	width:500px;
+}
+
+.tabla3 {
+	font-weight:bold;
+	background-color:#C0C0C0;
+	border:none;
+	width:500px;
+}
+
+.columna {
+	width: 250px;
+	height: 20px;
+	font-weight:bold;
+	vertical-align:middle;
+	color:#FFF;
+	background-color: #F37622;
+	text-align: center;
+}
+
+.columna1 {
+	width: 250px;
+	height: 20px;
+	font-weight:bold;
+	vertical-align:middle;
+	color:#FFF;
+	background-color: #F37622;
+	text-align: center;
+}
+
+.columna2 {
+	height: 15px;
+	font-weight:bold;
+	vertical-align:middle;
+	background-color: #FFD6BB;
+	text-align: center;
+}
+
+.columna3 {
+	font-weight:bold;
+	vertical-align:middle;
+	background-color: #FFD6BB;
+	text-align: center;
+	width: 91px;
+	height: 40px;
+}
+
+.columna4 {
+	font-weight:bold;
+	vertical-align:middle;
+	background-color: #FFD6BB;
+	text-align: left;
+	width: 150px;
+	height: 40px;
+}
+
+.columna5 {
+	width: 140px;
+	height: 20px;
+	font-weight:bold;
+	vertical-align:middle;
+	color:#FFF;
+	background-color: #F37622;
+	text-align: center;
+}
+
+.columna6 {
+	height: 15px;
+	font-weight:bold;
+	vertical-align:middle;
+	background-color: #FFD6BB;
+	text-align: left;
+}
+
+.columna7 {
+	height: 15px;
+	font-weight:bold;
+	font-size:small;
+	vertical-align:middle;
+	background-color: #006600;
+	}
+
+.columna8 {
+	height: 15px;
+	font-weight:bold;
+	vertical-align:middle;
+	background-color: #FF6600;
+	}
+
+.columna9 {
+	height: 15px;
+	font-weight:bold;
+	font-size:small;
+	vertical-align:middle;
+	background-color: #C0C0C0;
+	text-align: left;
+}
+
+.fila {
+	background-color: #FFD6BB;
+	font-weight: bold;
+}
+
+tr.reportePa {
+	background: #FFFFFF;
+}
+
+tr.reporteIm {
+	background: #EBEBEB;
+}
+
+td.reporteDato {
+	text-align: left;
+}
+
+p {
+	text-align: justify;
+}
+
+
+
+
+
+a {
+	color : blue;
+}
+
+
+
+a.mainlevel-footer {
+	text-decoration: none;
+	font-weight: normal;
+	font-size: 12px;
+	color: #2F74BD;
+	padding: 8px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+a.mainlevel-footer:hover {
+	text-decoration: underline;
+	color: #DE292B;
+}
+.mainlevel-footer {
+	color: #666666;
+	font-size: 11px;
+}
+
+
+
+caja_texto 
+{
+	border: #000000 thin solid;
+	color: #666666;
+	background-color: #FFFFFF;
+	font-size: 10px
+}
+
+
+
+div#suscribya {
+	margin-top: 92px;
+	margin-left: 20px;
+}
+
+div#suscribya a {
+	display: block;
+	width: 132px;
+	height: 23px;
+	background: url(../images/buttons/suscrip_ya.jpg) no-repeat;
+}
+
+div#suscribya a:hover {
+	background-position: 0px -23px;
+}
+
+td.titulo {
+	font-family: "Arial Black";
+	font-size: 20px;
+	color: #E80300;
+}
+
+td.titulo_green {
+	font-family: "Arial Black";
+	font-size: 20px;
+	color: #BFD45F;
+}
+
+td.texto {
+	font-family: Verdana;
+	font-size: 12px;
+	color: #333333;
+}
+
+a#planes {
+	display: block;
+	width: 251px;
+	height: 156px;
+	background: url(../images/buttons/planes.jpg) no-repeat;
+}
+
+a#planes:hover, a#referidos:hover {
+	background-position: 0px -156px;
+}
+
+a#referidos {
+	display: block;
+	width: 255px;
+	height: 156px;
+	background: url(../images/buttons/referidos.jpg) no-repeat;
+}
+
+a#opinion {
+	display: block;
+	width: 282px;
+	height: 156px;
+	background: url(../images/buttons/opinion.jpg) no-repeat;
+}
+
+
+a#chat {
+	display: block;
+	width: 251px;
+	height: 202px;
+	background: url(../images/buttons/chat.jpg) no-repeat;
+}
+
+a#chat:hover {
+	background-position: 0px -202px;
+}
+
+input.siguiente {
+	background-color: #E80300;
+	border: thin solid #000000;
+	color: #FFFFFF
+}
+
+div.producto_opcion {
+	border: #C11C1E thin solid;
+	/* border: #A1CDE6 thin solid; */
+}
+
+div.producto_opcion div.titulo {
+	color: #FFFFFF; 
+	/* background-color: #A1CDE6; */
+	background-color: #C11C1E;
+	font-weight: bold; 
+	text-align: center; 
+	margin-bottom: 8px;
+}
+
+a.login {
+	background: url(../images/buttons/ingresa_aqui.jpg);
+	width: 154px;
+	height: 24px;
+	display: block;
+}
+
+a.login:hover {
+	background-position: 0px -24px;
+}
+
+td.login_intro {
+	border: #A1CDE6 thin solid;
+}
+
+a#soporte {
+	display: block;
+	width: 205px;
+	height: 23px;
+	background: url(../images/buttons/soporte.jpg) no-repeat;
+	margin-bottom: 21px;
+	margin-left: 32px;
+}
+
+a#soporte:hover {
+	background-position: 0px -23px;
+}
+
+a#caracteristicas {
+	display: block;
+	width: 307px;
+	height: 182px;
+	background: url(../images/buttons/banner_car.jpg) no-repeat;
+}
+
+a#banner_ez {
+	display: block;
+	width: 481px;
+	height: 182px;
+	background: url(../images/buttons/banner_ez.jpg) no-repeat;
+}
+
+a#caracteristicas:hover, a#banner_ez:hover {
+	background-position: 0px -182px;
+} 
+
+/* Frontend nuevo */
+#Layer1 {
+	position:absolute;
+	width:200px;
+	height:32;
+	z-index:0;
+	left: 409;
+	top: 17;
+}
+#Layer2 {
+	position:absolute;
+	width:47px;
+	height:26px;
+	z-index:1;
+	left: 13;
+}
+#Layer3 {
+	position:absolute;
+	width:130px;
+	height:26px;
+	z-index:2;
+	left: 60;
+}
+
