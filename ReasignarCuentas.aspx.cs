@@ -45,21 +45,38 @@ public partial class ReasignarCuentas : System.Web.UI.Page
             {
                 conn.Open();
 
+             
+
                 string select = @"SELECT * FROM View_PENDIENTES_CUENTA_CxP WHERE 1 = 1";
+             
 
                 if (DropDownListAsignado.Text != "0")
                 {
                     select += " AND ASIGNADO_A = @DropDownListAsignado";
+                   
                 }
 
                 if (DropDownListEntidad.Text != "0")
                 {
-                    select += " AND ID_ENTIDAD = " + DropDownListEntidad.Text;
+                    select += " AND ID_ENTIDAD = @DropDownListEntidad " ;
+                 
                 }
 
+
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
-                cmd.Parameters.AddWithValue("@DropDownListAsignado", DropDownListAsignado.SelectedValue);
-                cmd.Parameters.AddWithValue("@DropDownListAsignado", DropDownListAsignado.SelectedValue);
+
+                if (DropDownListAsignado.Text != "0")
+                {
+                    
+                   cmd.Parameters.AddWithValue("@DropDownListAsignado", DropDownListAsignado.SelectedValue);
+                }
+
+                if (DropDownListEntidad.Text != "0")
+                {
+                    
+                    cmd.Parameters.AddWithValue("@DropDownListEntidad", DropDownListEntidad.Text);
+                }
+
                 SqlDataReader reader_sql = cmd.ExecuteReader();
 
 

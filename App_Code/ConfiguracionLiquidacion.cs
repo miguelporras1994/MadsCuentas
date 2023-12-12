@@ -212,11 +212,11 @@ public class ConfiguracionLiquidacion
     public double CalcularICA(double total, double salud, double pension, double arl, double ica)
     {
         if (ica == 0)
-            //return Math.Round((((total - salud - pension - arl) * ICA) / 1000),0);
-            return Math.Round((((total - salud - pension) * ICA) / 1000), 0);
+            return Math.Round((((total - salud - pension - arl) * ICA) / 1000),0);
+            //return Math.Round((((total - salud - pension) * ICA) / 1000), 0);
         else
+            return Math.Round((((total - salud - pension - arl) * ica) / 1000), 0);
             //return Math.Round((((total - salud - pension - arl) * ica) / 1000), 0);
-            return Math.Round((((total - salud - pension) * ica) / 1000), 0);
     }
 
     public double CalcularAFC(double total, double pension)

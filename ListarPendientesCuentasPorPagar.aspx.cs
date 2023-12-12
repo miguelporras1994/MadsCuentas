@@ -87,8 +87,21 @@ public partial class ListarPendientesCuentasPorPagar : System.Web.UI.Page
                 }
 
                 SqlCommand cmd = new SqlCommand(select, (SqlConnection)conn);
-                cmd.Parameters.AddWithValue("@DropDownListAsignado", DropDownListAsignado.SelectedValue);
-                cmd.Parameters.AddWithValue("@usuario", ViewState["usuario"].ToString());
+
+                if (ViewState["usuario"] != null)
+                {
+                    cmd.Parameters.AddWithValue("@usuario", ViewState["usuario"].ToString());
+
+                }
+                else
+                {
+                    if (DropDownListAsignado.Text != "0")
+                    {
+                        cmd.Parameters.AddWithValue("@DropDownListAsignado", DropDownListAsignado.SelectedValue);
+                    }
+                }
+              
+               
                 SqlDataReader reader_sql = cmd.ExecuteReader();
 
 
