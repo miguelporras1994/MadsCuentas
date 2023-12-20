@@ -81,7 +81,7 @@ public partial class LiquidadorPersonaJuridica : System.Web.UI.Page
         LabelCuentaID.Text = id_cuenta.ToString();
         LabelCuentaPorPagar.Text = cuenta.CuentaPorPagar;
 
-        TextBoxObservaciones.Text = "CONTRATO " + cuenta.NumeroContrato + " / " + cuenta.NumeroPago +" / CODIGO CCP: "+ cuenta.CodigoCCP;
+        TextBoxObservacionesGenerales.Text = "CONTRATO " + cuenta.NumeroContrato + " / " + cuenta.NumeroPago +" / CODIGO CCP: "+ cuenta.CodigoCCP;
 
         Session["DOCUMENTO_CONSULTAR"] = cuenta.NumeroDocumentoBeneficiaro;
         //TextBoxNumeroRP.Text = cuenta.NumeroRP;
